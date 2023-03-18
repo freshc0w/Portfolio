@@ -51,7 +51,7 @@ body {
     max-height: 90px;
     top: 0;
     left: 0;
-    padding: max(0.5rem, 0.9vw) max(1.25rem, 3vw);
+    padding: max(0.4rem, 0.8vw) max(1.25rem, 3vw);
     color: var(--global-color-primary);
     background-color: var(--global-bg-color-darkgrey);
     text-decoration: none;
@@ -65,11 +65,12 @@ body {
 .header-bar__wrapper {
     overflow: hidden;
     display: flex;
+    width: 100%;
     justify-content: space-between;
     text-align: center;
     align-items: center;
-
 }
+
 
 .directory > a {
     height: 80%;
@@ -80,17 +81,11 @@ body {
     /* padding: 1.25rem 2rem; */
 }
 
-.directory > a::after {
+.directory > a:not(:last-child)::after {
     content: "";
     border-left: 1px solid #606060;
     align-self: center;
     margin: 0 1.25rem;
-}
-
-.directory > a:last-child::after,
-a.directory__contact::after {
-    border: none;
-    margin: 0;
 }
 
 .directory:first-child {
@@ -99,14 +94,35 @@ a.directory__contact::after {
 }
 
 .signature > em {
+    display: inline-block;
     font-family: 'Signature', 'Montserrat', 'Gill Sans', 'Gill Sans MT', 
     Calibri, 'Trebuchet MS', sans-serif;
     flex-shrink: 0;
-    overflow-y: visible;
-    width: 140px;
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    overflow: visible;
+    width: 150px;
+    font-size: clamp(1.75rem, 2.2vw, 2rem);
 }
+
 
 .menu-icon {
     display: none;
+}
+
+@media screen and (max-width: 675px) {
+    .header-bar__wrapper {
+        flex-direction: column;
+    }
+    .directory:first-child > a::after {
+        border: none;
+        margin: 0 0.5rem;
+    }
+    .directory:last-child {
+        min-width: 400px;
+        overflow-x: visible;
+    }
+    .directory:last-child > a:not(:last-child)::after {
+        /* margin: 0 clamp(0.5rem, 2vw, 1.25rem); */
+        margin: 0 clamp(0.5rem, 3.5vw, 2rem);
+        overflow: visible;
+    }
 }
