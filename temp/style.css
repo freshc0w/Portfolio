@@ -26,6 +26,7 @@ body {
     align-items: center;
     background: transparent;
     overflow: hidden;
+    overflow-x: auto;
     width: 85%;
     height: 75%;
     border: 2px solid red;
