@@ -39,7 +39,7 @@
 body {
 	background-color: var(--global-bg-color-primary);
 	color: var(--global-color-primary);
-	height: 200vh;
+	/* height: 200vh; */
 }
 
 @font-face {
@@ -146,6 +146,7 @@ body {
 /* Header styling finish */
 
 section.hero {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -156,6 +157,7 @@ section.hero {
 	background-position: center;
 	background-size: cover;
 	z-index: 1;
+	overflow: hidden;
 }
 
 .overlay-mask {
