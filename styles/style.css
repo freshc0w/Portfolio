@@ -10,6 +10,7 @@
 	/* Background colors */
 	--global-bg-color-primary: #1a1a1a;
 	--global-bg-color-secondary: #55595f;
+	--global-bg-color-darker: #141414;
 	--global-bg-color-light: #e7e7e7;
 	--global-bg-color-lightgrey: #c0c0c0;
 	--global-bg-color-darkgrey: #2b2b2b;
@@ -31,15 +32,16 @@
 	--global-typography-font-size-primary: 1rem;
 	--global-typography-font-size-secondary: 0.8rem;
 	--global-typography-font-size-larger: 1.1rem;
-	--global-typography-font-size-heading-small: 1.5rem;
+	--global-typography-font-size-heading-small: 1.3rem;
 	--global-typography-font-size-heading-medium: 2rem;
-	--global-typography-font-size-heading-large: 3.5rem;
+	--global-typography-font-size-heading-large: 2.75rem;
+	--global-typography-font-size-heading-larger: 3.5rem;
 }
 
 body {
 	background-color: var(--global-bg-color-primary);
 	color: var(--global-color-primary);
-	/* height: 200vh; */
+	height: 200vh;
 }
 
 @font-face {
@@ -118,7 +120,7 @@ body {
 		"Trebuchet MS", sans-serif;
 	flex-shrink: 0;
 	overflow: visible;
-	width: 150px;
+	width: 230px;
 	font-size: clamp(1.75rem, 2.2vw, 2rem);
 }
 
@@ -145,6 +147,9 @@ body {
 }
 /* Header styling finish */
 
+/* 
+Hero styling start
+*/
 section.hero {
 	position: relative;
 	display: flex;
@@ -198,7 +203,37 @@ section.hero {
 	text-transform: capitalize;
 	font-weight: var(--global-typography-font-weight-bold);
 	line-height: 1;
-	font-size: var(--global-typography-font-size-heading-large);
+	font-size: var(--global-typography-font-size-heading-larger);
+}
+
+/* typing animation for title name */
+.hero__title:not(:first-child) {
+	overflow: hidden;
+	border-color: transparent;
+	animation: typewriter 3s steps(40, end),
+				blinking-caret .75s step-end 4;
+	white-space: nowrap;
+}
+
+/* Typing keyframe animations */
+@keyframes typewriter {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+		border-color: transparent;
+	}
+}
+
+/* Caret effect */
+@keyframes blinking-caret {
+	from, to {
+		border-color: transparent;
+	} 
+	50% {
+		border-right: .125rem solid whitesmoke;
+	}
 }
 
 .hero__sub-title {
@@ -301,10 +336,39 @@ section.hero {
 	filter: brightness(0.85) contrast(120%) saturate(90%);
 }
 
-
 /* Need a max media query of 1025px */
 @media screen and (max-width: 1025px) {
 	.hero__title-container {
 		grid-template: 1fr 1fr / 1fr;
 	}
+}
+
+/* Hero styling finish  */
+section.about {
+	margin-top: clamp(1.25rem, 5vw, 3rem);
+	font-family: var(--global-typography-font-family-text);
+	padding-inline: 5.5vw;
+}
+
+.about-wrapper {
+	max-width: 67.5rem;
+	margin-inline: auto;
+}
+
+.about-wrapper span:first-child {
+	font-size: var(--global-typography-font-size-heading-medium);
+}
+
+.about-wrapper span:nth-child(2) {
+	font-size: var(--global-typography-font-size-heading-large);
+}
+
+.about-wrapper span:last-child {
+	font-size: var(--global-typography-font-size-heading-small);
+	color: var(--global-color-accent-dark);
+	text-transform:uppercase;
+}
+
+.about-wrapper h1 {
+	margin-bottom: clamp(1rem, 3vw, 2rem);
 }
