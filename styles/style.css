@@ -51,7 +51,7 @@ body {
     max-height: 90px;
     top: 0;
     left: 0;
-    padding: max(0.4rem, 0.8vw) max(1.25rem, 3vw);
+    padding: max(0.4rem, 0.7vw) max(1.25rem, 3vw);
     color: var(--global-color-primary);
     background-color: var(--global-bg-color-darkgrey);
     text-decoration: none;
@@ -60,6 +60,7 @@ body {
     mix-blend-mode: difference; 
     font-family: 'Bebas Neue';
     font-size: clamp(1.25rem, 2.5vw, 2rem);
+    transition: opacity ease-out 0.8s, top ease-out 0.8s;
 }
 
 .header-bar__wrapper {
@@ -79,13 +80,23 @@ body {
     text-decoration: none;
     cursor: pointer;
     /* padding: 1.25rem 2rem; */
+    opacity: 0.8;
+}
+
+.directory:hover .directory__links:not(:hover) {
+    opacity: 0.3;
+}
+
+.directory:hover .directory__links:hover {
+    opacity: 1;
+    color: var(--global-color-accent-light);
 }
 
 .directory > a:not(:last-child)::after {
     content: "";
     border-left: 1px solid #606060;
     align-self: center;
-    margin: 0 1.25rem;
+    margin: 0 1.25rem; 
 }
 
 .directory:first-child {
@@ -121,7 +132,6 @@ body {
         overflow-x: visible;
     }
     .directory:last-child > a:not(:last-child)::after {
-        /* margin: 0 clamp(0.5rem, 2vw, 1.25rem); */
         margin: 0 clamp(0.5rem, 3.5vw, 2rem);
         overflow: visible;
     }
