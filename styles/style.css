@@ -29,9 +29,9 @@
 	--global-typography-font-weight-accent: 500;
 	--global-typography-font-weight-heading: 750;
 	--global-typography-font-weight-bold: 850;
-	--global-typography-font-size-primary: 1rem;
+	--global-typography-font-size-primary: 1.1rem;
 	--global-typography-font-size-secondary: 0.8rem;
-	--global-typography-font-size-larger: 1.1rem;
+	--global-typography-font-size-larger: 1.25rem;
 	--global-typography-font-size-heading-small: 1.3rem;
 	--global-typography-font-size-heading-medium: 2rem;
 	--global-typography-font-size-heading-large: 2.75rem;
@@ -258,9 +258,9 @@ section.hero {
 
 .hero__description {
     font-weight: var(--global-typography-font-weight-primary);
-    font-size: var(--global-typography-font-size-larger);
-    text-align: justify;
-	line-height: 1.2
+	font-size: var(--global-typography-font-size-primary);
+    /* text-align: justify; */
+	line-height: 1.2;
 }
 
 .hero__actions {
@@ -342,33 +342,74 @@ section.hero {
 		grid-template: 1fr 1fr / 1fr;
 	}
 }
-
 /* Hero styling finish  */
-section.about {
+
+/*
+Overall section styling
+*/
+section:not(#hero) {
 	margin-top: clamp(1.25rem, 5vw, 3rem);
 	font-family: var(--global-typography-font-family-text);
 	padding-inline: 5.5vw;
 }
 
-.about-wrapper {
+.wrapper {
 	max-width: 67.5rem;
 	margin-inline: auto;
 }
 
-.about-wrapper span:first-child {
+.section-heading-num {
 	font-size: var(--global-typography-font-size-heading-medium);
 }
 
-.about-wrapper span:nth-child(2) {
+.section-heading-title {
 	font-size: var(--global-typography-font-size-heading-large);
 }
 
-.about-wrapper span:last-child {
+.section-heading-subtitle {
 	font-size: var(--global-typography-font-size-heading-small);
 	color: var(--global-color-accent-dark);
 	text-transform:uppercase;
 }
 
+/* Overall section styling finish */
+
+/*
+About section styling
+*/
 .about-wrapper h1 {
 	margin-bottom: clamp(1rem, 3vw, 2rem);
 }
+
+.about-wrapper p {
+	font-family: var(--global-typography-font-family-text);
+	font-size: var(--global-typography-font-size-primary);
+	/* text-align: justify; */
+	margin-bottom: 3vw;
+	margin-bottom: clamp(0.5rem, 3vw, 1.25rem);
+}
+
+.about-wrapper > p > span {
+	font-family: 'Space Mono';
+	font-size: var(--global-typography-font-size-primary);
+	color: var(--global-color-accent);
+	animation: typewriter2 15s steps(40, end) infinite,
+				blinking-caret 2s 4;
+	animation-delay: 4s;
+	display: inline-block;
+	overflow: hidden;
+	border-color: transparent;
+	white-space: nowrap;
+	transform: translateY(5px)
+}
+
+@keyframes typewriter2 {
+	0% {
+		width: 0;
+	}
+	20%, 100% {
+		width: 150px;
+		border-color: transparent;
+	}
+}
+/* About section styling finish */
