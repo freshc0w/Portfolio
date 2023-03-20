@@ -368,6 +368,7 @@ section:not(#hero) {
 
 .section-heading-subtitle {
 	font-size: var(--global-typography-font-size-heading-small);
+	/* color: var(--global-color-accent); */
 	color: var(--global-color-accent-dark);
 	text-transform:uppercase;
 }
@@ -401,6 +402,11 @@ About section styling
 	border-color: transparent;
 	white-space: nowrap;
 	transform: translateY(5px)
+}
+
+.about-wrapper > p > strong {
+	color: var(--global-color-accent);
+	border-bottom: 0.125rem solid;
 }
 
 @keyframes typewriter2 {
