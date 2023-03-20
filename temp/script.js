@@ -96,4 +96,4 @@ nextBtn.addEventListener("click", slideNext);
 prevBtn.addEventListener("click", slidePrev);
 
 // Add auto play for carousel.
-setInterval(slideNext, 2000);
+// setInterval(slideNext, 2000);

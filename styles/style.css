@@ -419,3 +419,55 @@ About section styling
 	}
 }
 /* About section styling finish */
+
+/*
+Skills and Technologies section styling
+*/
+.skills-wrapper h1 {
+	margin-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+.skills-container {
+	width: 100%;
+	max-width: 997.5px;
+	height: 118px;
+	margin-inline: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: transparent;
+	overflow: hidden;
+}
+
+.skills-train-wrapper {
+	display: flex;
+	align-items: center;
+	background: transparent;
+	overflow: hidden;
+}
+
+.skills-train {
+	display: grid;
+	justify-items: center;
+	grid-auto-flow: column;
+	grid-auto-columns: 115px;
+	background: transparent;
+	transition: transform 0.5s linear;
+}
+
+.skills-container button {
+	min-width: 35px;
+	background-color: transparent;
+	color: var(--global-color-primary);
+	outline: none;
+	border: none;
+	font-size: var(--global-typography-font-size-larger);
+	cursor: pointer;
+}
+
+.tool-container {
+	width: 100px;
+	height: 110px;
+	border: 1px dotted white;
+	text-align: center;
+}
