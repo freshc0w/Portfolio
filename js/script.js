@@ -61,7 +61,7 @@ skills["webpack"] = {
 	desc: "webpack icon",
 	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg",
 };
-skills["R"] = {
+skills["Rstudio"] = {
 	desc: "R icon",
 	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg",
 };

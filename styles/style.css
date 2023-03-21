@@ -488,7 +488,35 @@ Skills and Technologies section styling
 
 .skill-num {
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	bottom: 4px;
+	right: 4px;
 	font-size: var(--global-typography-font-size-secondary);
+}
+/* Skills and Technologies section styling finish */
+
+/*
+Projects section styling
+*/
+.projects-wrapper h1 {
+	text-align: center;
+}
+
+.project-display-btn {
+	margin-top: 1vw;
+	padding: 4px 8px;
+	background-color: transparent;
+	outline: transparent;
+	border: 0.75px solid var(--global-color-primary);
+	color: var(--global-color-primary);
+	animation: jumping 1.5s linear infinite alternate;
+	font-size: var(--global-typography-font-size-primary)
+}
+
+@keyframes jumping {
+	from {
+		transform: translateY(-10px);
+	}
+	to {
+		transform: translateY(5px);
+	}
 }
