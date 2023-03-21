@@ -466,8 +466,29 @@ Skills and Technologies section styling
 }
 
 .tool-container {
+	position: relative;
 	width: 100px;
 	height: 110px;
 	border: 1px dotted white;
 	text-align: center;
+	padding: 10px;
+}
+
+.skill-icon {
+	width: 90%;
+}
+
+.skill-name {
+	font-family: var(--global-typography-font-family-primary);
+	font-family: var(--global-typography-font-family-secondary);
+	font-size: var(--global-typography-font-size-secondary);
+	text-transform: capitalize;
+	
+}
+
+.skill-num {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: var(--global-typography-font-size-secondary);
 }
