@@ -38,10 +38,15 @@
 	--global-typography-font-size-heading-larger: 3.5rem;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	background-color: var(--global-bg-color-primary);
 	color: var(--global-color-primary);
-	height: 200vh;
+	/* temp */
+	height: 500vh;
 }
 
 @font-face {
@@ -59,13 +64,13 @@ body {
 	padding: max(0.4rem, 0.7vw) max(1.25rem, 3vw);
 	color: var(--global-color-primary);
 	background-color: var(--global-bg-color-primary);
-	background-color: rgb(12, 12, 12);
+	background-color: rgba(12, 12, 12, 0.6);
 	text-decoration: none;
 	opacity: 0.9;
 
 	/* Blends with surrounding background when scrolling */
-	mix-blend-mode:lighten;
-	background-blend-mode: darken;
+	/* mix-blend-mode:lighten; */
+	/* background-blend-mode: darken; */
 
 	font-family: "Bebas Neue";
 	font-size: clamp(1.25rem, 2.5vw, 2rem);
@@ -497,11 +502,20 @@ Skills and Technologies section styling
 /*
 Projects section styling
 */
-.projects-wrapper h1 {
+.projects-wrapper {
+	overflow: visible;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.projects-wrapper > h1 {
 	text-align: center;
 }
 
 .project-display-btn {
+	cursor: pointer;
 	margin-top: 1vw;
 	padding: 4px 8px;
 	background-color: transparent;
@@ -519,4 +533,10 @@ Projects section styling
 	to {
 		transform: translateY(5px);
 	}
+}
+
+.projects-display {
+	border: 1px red solid;
+	height: 85vh;
+	width: 80vw;
 }

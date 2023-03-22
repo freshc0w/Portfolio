@@ -49,6 +49,17 @@ skills["css"] = {
 	desc: "css icon",
 	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
 };
+
+// Temporary (To be learnt)
+// skills["react.js"] = {
+// 	desc: "react.js icon",
+// 	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+// };
+// skills["node.js"] = {
+// 	desc: "node.js icon",
+// 	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+// };
+
 skills["bootstrap"] = {
 	desc: "bootstrap icon",
 	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
@@ -146,6 +157,10 @@ function insertContainersAfter() {
 		count++;
 	}
 }
+
+/* Skills carousel end */
+
+/* Project event listeners*/
 
 // function initialisePage() {
 
