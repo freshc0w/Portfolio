@@ -161,23 +161,45 @@ function insertContainersAfter() {
 /* Skills carousel end */
 
 /* Project event listeners*/
-const projects = document.querySelectorAll('.project');
-const projectMask = document.querySelector('.project-hideall');
-projects.forEach(proj => {
-	proj.addEventListener("click", (e) => {
-		e.stopPropagation();
-		if(!proj.classList.contains("project-active")) {
-			proj.classList.add("project-active");
+const projects = document.querySelectorAll(".project");
+const projectOverlays = document.querySelectorAll(".project-overlay");
+const projectCloseBtns = document.querySelectorAll(".project__close--btn");
+
+projects.forEach((proj) => {
+	proj.addEventListener("click", expands);
+});
+
+function expands() {
+	if (!this.classList.contains("project-active")) {
+		this.classList.add("project-active");
+	}
+
+	// Hides all other projects when animating.
+	projects.forEach((proj) => {
+		if (!proj.classList.contains("project-active")) {
+			proj.style.visibility = "hidden";
 		}
-		
-		// Hides all other projects when animating.
-		projects.forEach(proj => {
-			if(!proj.classList.contains("project-active")) {
-				proj.style.visibility = "hidden";
+	});
+}
+
+projectCloseBtns.forEach((btn) => {
+	btn.addEventListener("click", (e) => {
+		projects.forEach((proj) => {
+			proj.removeEventListener("click", expands);
+			if (proj.classList.contains("project-active")) {
+				proj.classList.remove("project-active");
 			}
+			setTimeout(() => {
+				proj.addEventListener("click", expands);
+			}, 200);
+		});
+		projects.forEach((proj) => {
+			proj.style.visibility = "visible";
 		})
-	}) 
-})
+	});
+});
+
+/* Project event listeners end */
 
 // function initialisePage() {
 
