@@ -626,9 +626,6 @@ Projects section styling
 
 }
 
-.project__modal-logo:first-of-type {
-}
-
 .project {
 	background-size: cover;
 	background-position: center;
@@ -656,10 +653,10 @@ Projects section styling
 	left: 0;
 	height: 100%;
 	width: 100%;
-	animation: expand 1.1s ease-in-out 1;
+	animation: expand-project 1.1s ease-in-out 1;
 }
 
-@keyframes expand {
+@keyframes expand-project {
 	from {
 		width: 33%;
 	}
@@ -689,7 +686,6 @@ Projects section styling
 }
 
 .project__desc {
-	border: .75px solid var(--global-color-accent-dark);
 	border: .75px solid var(--global-color-accent);
 	padding: 0.5rem 1rem;
 	min-height: 350px;
