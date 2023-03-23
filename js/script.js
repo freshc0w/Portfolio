@@ -164,6 +164,7 @@ function insertContainersAfter() {
 const projects = document.querySelectorAll(".project");
 const projectModals = document.querySelectorAll(".project__modal-container");
 const projectOverlays = document.querySelectorAll(".project-overlay");
+const projectBlurOverlays = document.querySelectorAll(".blur-overlay");
 const projectCloseBtns = document.querySelectorAll(".project__close--btn");
 
 projects.forEach((proj) => {
@@ -187,6 +188,11 @@ function expands() {
 		modal.style.visibility = "hidden";
 		modal.style.display = "none";
 	});
+
+	// Dampen blur overlay for clarity of image.
+	projectBlurOverlays.forEach(blurOverlay => {
+		blurOverlay.style.backdropFilter = "blur(0px)";
+	})
 }
 
 projectCloseBtns.forEach((btn) => {
@@ -207,6 +213,9 @@ projectCloseBtns.forEach((btn) => {
 			modal.style.visibility = "visible";
 			modal.style.display = "flex";
 		});
+		projectBlurOverlays.forEach(blurOverlay => {
+			blurOverlay.style.backdropFilter = "blur(3.5px)";
+		})
 	});
 });
 
