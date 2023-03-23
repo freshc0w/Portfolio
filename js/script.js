@@ -161,6 +161,23 @@ function insertContainersAfter() {
 /* Skills carousel end */
 
 /* Project event listeners*/
+const projects = document.querySelectorAll('.project');
+const projectMask = document.querySelector('.project-hideall');
+projects.forEach(proj => {
+	proj.addEventListener("click", (e) => {
+		e.stopPropagation();
+		if(!proj.classList.contains("project-active")) {
+			proj.classList.add("project-active");
+		}
+		
+		// Hides all other projects when animating.
+		projects.forEach(proj => {
+			if(!proj.classList.contains("project-active")) {
+				proj.style.visibility = "hidden";
+			}
+		})
+	}) 
+})
 
 // function initialisePage() {
 

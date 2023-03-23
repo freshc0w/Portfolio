@@ -517,6 +517,7 @@ Projects section styling
 .project-display-btn {
 	cursor: pointer;
 	margin-top: 1vw;
+	margin-bottom: 1vw;
 	padding: 4px 8px;
 	background-color: transparent;
 	outline: transparent;
@@ -535,8 +536,83 @@ Projects section styling
 	}
 }
 
+
 .projects-display {
+	position: relative;
 	border: 1px red solid;
 	height: 85vh;
 	width: 80vw;
+	display: flex;
+	
+}
+
+.project-hideall {
+	background-color: var(--global-bg-color-darkgrey);
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.project {
+	z-index: 1;
+	cursor: pointer;
+	border: 1px solid blue;
+	flex: 1;
+	opacity: 0.85;
+	transition: transform 0.6s;
+}
+
+.projects-display:hover .project:hover {
+	opacity: 0.9;
+}
+
+.projects-display:hover .project:not(hover) {
+	opacity: 0.35;
+}
+.projects-display:hover .project-active:hover {
+	opacity: 1;
+}
+
+
+.project:first-child,
+.project:nth-child(2) {
+	background-image: url(../images/background1-todo-list.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.project:nth-child(2) {
+}
+.project:nth-child(3) {
+}
+
+.project-active {
+	z-index: 2;
+	cursor:auto;
+	opacity: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	animation: expand 1.1s ease-in-out 1;
+}
+
+@keyframes expand {
+	from {
+		width: 33%;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+.project-overlay {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.2);
+	transition: 
 }
