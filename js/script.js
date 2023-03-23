@@ -162,6 +162,7 @@ function insertContainersAfter() {
 
 /* Project event listeners*/
 const projects = document.querySelectorAll(".project");
+const projectModals = document.querySelectorAll(".project__modal-container");
 const projectOverlays = document.querySelectorAll(".project-overlay");
 const projectCloseBtns = document.querySelectorAll(".project__close--btn");
 
@@ -180,6 +181,12 @@ function expands() {
 			proj.style.visibility = "hidden";
 		}
 	});
+
+	// Hide title and logo when project is expanded.
+	projectModals.forEach((modal) => {
+		modal.style.visibility = "hidden";
+		modal.style.display = "none";
+	});
 }
 
 projectCloseBtns.forEach((btn) => {
@@ -195,7 +202,11 @@ projectCloseBtns.forEach((btn) => {
 		});
 		projects.forEach((proj) => {
 			proj.style.visibility = "visible";
-		})
+		});
+		projectModals.forEach((modal) => {
+			modal.style.visibility = "visible";
+			modal.style.display = "flex";
+		});
 	});
 });
 
