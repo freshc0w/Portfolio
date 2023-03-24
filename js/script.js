@@ -219,8 +219,33 @@ projectCloseBtns.forEach((btn) => {
 	});
 });
 
+
+/* Form */
+const submitFormBtn = document.querySelector('.submit-form-btn');
+const contactForm = document.querySelector('form');
+submitFormBtn.addEventListener("click", (e) => {
+	e.preventDefault();
+
+	// Alerts users/employers that backend collecting info fnc is currently
+	// down.
+	const alertText = document.createElement('p');
+	alertText.classList.add('contact__alert-text');
+	
+	const userName = document.getElementById("input-name") ? document.getElementById("input-name") : "";
+	userName.value.style = "color: blue;"
+	alertText.textContent = "I apologise " + userName.value + ". Backend for info collection is" 
+		+ " not set up yet. Try contacting me in one of the other links.";
+
+	
+	if(!document.contains(document.querySelector('.contact__alert-text'))) {
+		contactForm.appendChild(alertText);
+	}
+});
+
 /* Project event listeners end */
 
 // function initialisePage() {
 
 // }
+
+
