@@ -938,6 +938,15 @@ Contact form styling
 	color: var(--global-color-primary);
 }
 
+.contact__links a > span {
+	transition: all 0.35s;
+}
+
+.contact__links a > span:hover {
+	color: var(--global-color-accent-light);
+	transform: rotate(360deg);
+}
+
 .contact-wrapper > form {
 	margin-top: 1.25rem;
 	display: flex;
