@@ -623,7 +623,12 @@ Projects section styling
 	filter: contrast(500%) 
 			drop-shadow(5px 5px 5px #0AF5F1) 
 			invert(10%);
+}
 
+.project__modal-logo > img.todo-icon {
+	filter: contrast(150%) 
+	drop-shadow(5px 5px 5px #0AF5F1) 
+	invert(10%);
 }
 
 .project {
