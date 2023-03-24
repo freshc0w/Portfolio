@@ -586,7 +586,8 @@ Projects section styling
 }
 
 .projects-display:hover .project:hover,
-.project:hover, .blur-overlay {
+.project:hover,
+.blur-overlay {
 	opacity: 0.85;
 	/* backdrop-filter: blur(2px); */
 }
@@ -636,22 +637,18 @@ Projects section styling
 .project__modal-logo > img {
 	border-radius: 2rem;
 	width: 100%;
-	filter: contrast(500%) 
-			drop-shadow(5px 5px 5px #0AF5F1) 
-			invert(10%);
+	filter: contrast(500%) drop-shadow(5px 5px 5px #0af5f1) invert(10%);
 }
 
 .project__modal-logo > img.todo-icon {
-	filter: contrast(150%) 
-	drop-shadow(5px 5px 5px #0AF5F1) 
-	invert(10%);
+	filter: contrast(150%) drop-shadow(5px 5px 5px #0af5f1) invert(10%);
 }
 
 .project {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-} 
+}
 
 .project:first-child {
 	background-image: url(../images/background1-todo-list.png);
@@ -707,7 +704,7 @@ Projects section styling
 }
 
 .project__desc {
-	border: .75px solid var(--global-color-accent);
+	border: 0.75px solid var(--global-color-accent);
 	padding: 0.5rem 1rem;
 	min-height: 350px;
 	width: max(350px, 40%);
@@ -731,11 +728,11 @@ Shorten top to accommodate for this. */
 }
 .project__desc > h2 {
 	text-transform: uppercase;
-	font-size: var(--global-typography-font-size-heading-medium)
+	font-size: var(--global-typography-font-size-heading-medium);
 }
 .project__desc > h2,
 .project__desc > h3 {
-	color: var(--global-color-accent)
+	color: var(--global-color-accent);
 }
 .project__desc > p {
 	margin-bottom: 10px;
@@ -758,15 +755,13 @@ Shorten top to accommodate for this. */
 	margin-left: auto;
 }
 .project__desc-actions > button {
-	font-family: 'Montserrat', sans-serif;
-	border-radius: .75rem;
+	font-family: "Montserrat", sans-serif;
+	border-radius: 0.75rem;
 	padding: 6px 9px;
 	border: 1px solid var(--global-color-accent-dark);
 	outline: none;
 	background-color: rgba(100, 100, 100, 0.1);
 }
-
-
 
 .project__desc-actions > button > a {
 	color: var(--global-color-primary);
@@ -788,8 +783,6 @@ Shorten top to accommodate for this. */
 	margin-right: 6px;
 	transition: transform 0.3s;
 }
-
-
 
 .project__close--btn {
 	z-index: 4;
@@ -858,7 +851,7 @@ Blog styling
 .blog-container {
 	display: flex;
 	gap: 2vw;
-	font-family: 'Poppins', sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 
 .blog {
@@ -882,7 +875,7 @@ Blog styling
 
 .blog__type {
 	padding: 6px 12px;
-	max-width: 150px;	
+	max-width: 150px;
 	text-align: center;
 	color: white;
 	background-color: #ac8116;
@@ -894,8 +887,8 @@ Blog styling
 }
 
 .blog__desc {
-	text-align: justify;	
-	font-family: 'Montserrat';
+	text-align: justify;
+	font-family: "Montserrat";
 	margin-bottom: 1.5rem;
 	font-size: var(--global-typography-font-size-primary);
 }
@@ -913,15 +906,14 @@ Blog styling
 	font-family: var(--global-typography-font-family-secondary);
 	background-color: var(--global-color-accent-dark);
 	border-radius: 0.75rem;
-	box-shadow: 1px 4px 16px rgba(0, 0, 0, 0.3),
-				1px 4px 24px rgba(0,0,0,0.1);
+	box-shadow: 1px 4px 16px rgba(0, 0, 0, 0.3), 1px 4px 24px rgba(0, 0, 0, 0.1);
 	margin-right: 0;
 	margin-left: auto;
 }
 
 .blog > .blog-link-wrapper button:hover {
 	background-color: var(--global-color-accent-dark);
-	border: .75px solid var(--global-bg-color-lightgrey);
+	border: 0.75px solid var(--global-bg-color-lightgrey);
 	color: var(--global-color-accent-light);
 	box-shadow: 1px 2px 12px rgba(255, 255, 255, 0.3);
 }
@@ -929,7 +921,6 @@ Blog styling
 .blog > .blog-link-wrapper > button > a {
 	text-decoration: none;
 	color: var(--global-color-primary);
-
 }
 
 .fa-arrow-up {
@@ -969,7 +960,7 @@ Contact form styling
 }
 .contact-wrapper > p:first-of-type {
 	font-size: var(--global-typography-font-size-larger);
-	margin-bottom: 2rem;	
+	margin-bottom: 2rem;
 }
 
 .contact__links {
@@ -1009,7 +1000,7 @@ Contact form styling
 }
 
 .contact-highlight {
-	color: var(--global-color-accent-light);	
+	color: var(--global-color-accent-light);
 }
 
 .contact__input-wrapper {
@@ -1044,7 +1035,7 @@ Contact form styling
 .contact__input-wrapper > input::placeholder,
 .contact__input-wrapper > textarea::placeholder {
 	font-style: italic;
-}	
+}
 
 .contact__input-wrapper > textarea {
 	resize: none;
@@ -1088,7 +1079,7 @@ Contact form styling
 	.contact__input-wrapper {
 		flex-direction: column;
 		align-items: center;
-		gap: 10px;	
+		gap: 10px;
 	}
 	.contact__input-wrapper {
 		align-items: flex-start;
@@ -1097,24 +1088,23 @@ Contact form styling
 		margin-left: 0;
 	}
 	.contact__input-wrapper > input,
-.contact__input-wrapper > textarea {
-	width: 100%;
-}
+	.contact__input-wrapper > textarea {
+		width: 100%;
+	}
 }
 
 .contact__alert-text {
 	color: rgb(255, 55, 55);
 	font-style: italic;
 	font-size: var(--global-typography-font-size-larger);
-
 }
 /* Contact form styling finish */
 
- /*
+/*
  Footer styling 
  */
 
- footer {
+footer {
 	margin-top: clamp(1rem, 3.5vw, 3rem);
 	display: flex;
 	justify-content: center;
@@ -1125,14 +1115,14 @@ Contact form styling
 	background-color: rgba(10, 10, 10, 1);
 	color: whitesmoke;
 	font-size: 0.75rem;
-	font-family: 'Montserrat', sans-serif;
-  }
+	font-family: "Montserrat", sans-serif;
+}
 
-  footer > .fa-github {
-  color: whitesmoke;
-  font-size: 22px;
-  transition: transform 0.3s ease-in-out;
-  cursor: pointer;
+footer > .fa-github {
+	color: whitesmoke;
+	font-size: 22px;
+	transition: transform 0.3s ease-in-out;
+	cursor: pointer;
 }
 
 /* Footer styling finish */
