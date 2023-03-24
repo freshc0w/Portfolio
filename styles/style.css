@@ -45,8 +45,6 @@ html {
 body {
 	background-color: var(--global-bg-color-primary);
 	color: var(--global-color-primary);
-	/* temp */
-	height: 500vh;
 }
 
 @font-face {
@@ -1046,4 +1044,27 @@ Contact form styling
 	font-style: italic;
 	font-size: var(--global-typography-font-size-larger);
 
+}
+/* Contact form styling finish */
+
+ /* Footer */
+ footer {
+	margin-top: clamp(1rem, 3.5vw, 3rem);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	width: 100vw;
+	padding: 0.25rem;
+	background-color: rgba(10, 10, 10, 1);
+	color: whitesmoke;
+	font-size: 0.75rem;
+	font-family: 'Montserrat', sans-serif;
+  }
+  
+  .fa-github {
+  color: whitesmoke;
+  font-size: 22px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
