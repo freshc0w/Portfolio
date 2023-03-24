@@ -791,5 +791,116 @@ Projects section styling
 		font-size: 14px;
 	}
 }
+/* Propjects styling end */
 
+#blogs {
+	padding-inline: 4.5vw;
+}
 
+.blog-wrapper > h1 {
+	margin-bottom: 1rem;
+}
+
+.blog-container {
+	display: flex;
+	gap: 2vw;
+	font-family: 'Poppins', sans-serif;
+}
+
+.blog {
+	width: 50%;
+}
+
+.blog > img {
+	width: 100%;
+}
+
+.blog__date {
+	font-size: var(--global-typography-font-size-heading-small);
+	color: rgba(240, 240, 240, 0.7);
+}
+
+.blog__title {
+	font-size: var(--global-typography-font-size-heading-medium);
+	line-height: 1.25;
+	text-transform: capitalize;
+}
+
+.blog__type {
+	padding: 6px 12px;
+	max-width: 150px;	
+	text-align: center;
+	color: white;
+	background-color: #ac8116;
+	font-size: var(--global-typography-font-size-secondary);
+	font-weight: var(--global-typography-font-weight-accent);
+	border-radius: 2px;
+	margin: clamp(0.5rem, 2.5vw, 1.2rem) 0;
+	text-shadow: 0 0 1px white;
+}
+
+.blog__desc {
+	text-align: justify;	
+	font-family: 'Montserrat';
+	margin-bottom: 1.5rem;
+	font-size: var(--global-typography-font-size-primary);
+}
+
+.blog-link-wrapper {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.blog > .blog-link-wrapper > button {
+	border: none;
+	outline: none;
+	padding: 6.5px 14px;
+	font-size: var(--global-typography-font-size-primary);
+	font-family: var(--global-typography-font-family-secondary);
+	background-color: var(--global-color-accent-dark);
+	border-radius: 0.75rem;
+	box-shadow: 1px 4px 16px rgba(0, 0, 0, 0.3),
+				1px 4px 24px rgba(0,0,0,0.1);
+	margin-right: 0;
+	margin-left: auto;
+}
+
+.blog > .blog-link-wrapper button:hover {
+	background-color: var(--global-color-accent-dark);
+	border: .75px solid var(--global-bg-color-lightgrey);
+	color: var(--global-color-accent-light);
+	box-shadow: 1px 2px 12px rgba(255, 255, 255, 0.3);
+}
+
+.blog > .blog-link-wrapper > button > a {
+	text-decoration: none;
+	color: var(--global-color-primary);
+
+}
+
+.fa-arrow-up {
+	transform: rotate(45deg);
+	transition: transform 0.2s linear;
+}
+
+.blog-link > a:hover > .fa-arrow-up {
+	transform: rotate(90deg);
+}
+
+@media screen and (max-width: 1125px) {
+	.blog-container {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.blog {
+		width: 75%;
+		margin-bottom: 1.25rem;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.blog {
+		width: 90%;
+	}
+}
