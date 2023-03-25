@@ -305,7 +305,7 @@ section.hero {
 }
 
 .hero__actions button:hover::before {
-	animation: rotateBtn 1s;
+	animation: rotateBtn 0.4s;
 	transition: transform 0.4s;
 }
 
@@ -424,7 +424,6 @@ About section styling
 
 .about-wrapper > p > strong {
 	color: var(--global-color-accent);
-	border-bottom: 0.125rem solid;
 }
 
 @keyframes typewriter2 {
@@ -1025,10 +1024,9 @@ Contact form styling
 	border: none;
 	background-color: var(--global-bg-color-darkgrey);
 	color: var(--global-bg-color-light);
-	font-size: var(--global-typography-font-size-larger);
+	font-size: var(--global-typography-font-size-primary);
 	font-family: "Poppins", sans-serif;
-	padding: 10px;
-	/* border: 0.01px solid whitesmoke;	 */
+	padding: 8px;
 	box-shadow: 0 0 3px white;
 }
 
