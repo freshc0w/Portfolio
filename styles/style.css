@@ -857,7 +857,14 @@ Blog styling
 	width: 50%;
 }
 
-.blog > img {
+.blog__img-wrapper {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	min-height: 280px
+}
+
+.blog__img-wrapper > img {
 	width: 100%;
 }
 
@@ -935,6 +942,10 @@ Blog styling
 	.blog-container {
 		flex-direction: column;
 		align-items: center;
+	}
+
+	.blog__img-wrapper {
+		min-height: auto;
 	}
 
 	.blog {
