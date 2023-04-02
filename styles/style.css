@@ -654,7 +654,7 @@ Projects section styling
 }
 
 .project:nth-child(2) {
-	background-image: url(../images/background2.2-moviemate.png);
+	background-image: url(../images/background2.3-moviemate.png);
 }
 .project:nth-child(3) {
 	background-image: url(../images/background3-slot-pygame.png);
@@ -848,6 +848,7 @@ Blog styling
 }
 
 .blog-container {
+	position: relative;
 	display: flex;
 	gap: 2vw;
 	font-family: "Poppins", sans-serif;
@@ -936,6 +937,16 @@ Blog styling
 
 .blog-link > a:hover > .fa-arrow-up {
 	transform: rotate(90deg);
+}
+
+.blogs__temp-message {
+	font-size: var(--global-typography-font-size-heading-small);
+	margin-bottom: -3rem;
+	/* position: absolute; */
+	bottom: 0;
+	right: 0;
+	color: red;
+	/* right: 40%; */
 }
 
 @media screen and (max-width: 1125px) {
