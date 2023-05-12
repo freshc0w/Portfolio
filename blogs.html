@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blogs</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="./js/script.js" defer></script>
+    <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header-bar" id="nav-bar">
+        <div class="header-bar__wrapper">
+            <nav class="directory">
+                <a class="directory__links signature" href="./index.html#"><em>Chia-Chuan Tsou</em></a>
+                <a class="directory__links" href="./index.html#">
+                    <span class="fa fa-home"></span>
+                </a>
+            </nav>
+            <nav class="directory">
+                <a class="directory__links" href="./index.html#about">About</a>
+                <a class="directory__links" href="./index.html#skills">Skills</a>
+                <a class="directory__links" href="./index.html#projects">Projects</a>
+                <a class="directory__links" href="./index.html#blogs">Blogs</a>
+                <a class="directory__contact directory__links" href="./index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <article class="blog-article">
+        <section class="blog-intro">
+            <div class="blogs-intro-wrapper wrapper">
+                <div class="blog-info">
+                    <h1 class="blog__title">Time-saving tool for lazy (but efficient) developers.</h1>
+                    <h2 class="blog__date">9th March 2023</h2>
+                    <h3 class="blog__type">Web Development</h3>
+                    <p class="blog__desc">This blog was primarily written for DECO1400 students (Introduction To
+                        Web Design) as suggested by the lecturer. The guide was endorsed in the ed Discussion
+                        Board and has been viewed by more than 400 students.</p>
+                </div>
+                <img src="./images/Emmet-logo-on-top-of-grey-background.png" alt="Emmet Icon Picture"
+                    class="blog-picture">
+            </div>
+        </section>
+
+        <section class="blog-content">
+            <div class="blog-content-wrapper wrapper">
+                <img class="blog-scrnshot-img" src="./images/1blog-15.png" alt="Blog Post screenshot">
+                <p>Are you tired of wasting your precious time typing out long repetitive lines of HTML/CSS code? Or
+                    rather dread the feeling of carpal tunnel set in after hours of coding? Well, look no further, for
+                    Emmet is here to save the day (and your hands).</p>
+                <p>As requested by some peers, I will be making a quick guide on the basics of Emmet and how it can
+                    improve your workflow tremendously.</p>
+                <p>Let's get straight into it.</p>
+                <p>You might not already know it yet, but you might be already using emmet! In the first practical, you
+                    might remember a short hand of initialising a html template using !.</p>
+                <img src="./images/1blog-1.png" alt="Blog one picture one">
+                <p>Pressing Enter should generate the following text:</p>
+                <img src="./images/1blog-2.png" alt="Blog one picture two">
+                <p>To create element tags, simply write the tags without the brackets.</p>
+                <img src="./images/1blog-3.png" alt="Blog one picture three">
+                <p>As seen, some common attributes for certain tags have been already initialised for you. Simply press
+                    the Tab key to edit them instantly after creating the emmet expression.</p>
+                <p>Classes and ids can be added with a "." or "#" respectively, after the element tags.</p>
+                <img src="./images/1blog-4.png" alt="Blog one picture four">
+                <p>You can also mix and match classes and id together. For div containers, the tag name is not required.
+                </p>
+                <img src="./images/1blog-5.png" alt="Blog one picture five">
+                <p>Add multiple classes.</p>
+                <img src="./images/1blog-6.png" alt="Blog one picture six">
+                <p>Add custom attributes with square brackets []:</p>
+                <img src="./images/1blog-7.png" alt="Blog one picture seven">
+                <p>Reminder: After making the emmet expression and pressing Enter, press Tab to quickly edit the details
+                    and text content of the element tag.</p>
+                <p>Make nested elements with > (parent > child).</p>
+                <img src="./images/1blog-8.png" alt="Blog one picture eight">
+                <p>Add neighbouring elements with +.</p>
+                <img src="./images/1blog-9.png" alt="Blog one picture nine">
+                <p>Note: Neighbouring elements are not the same as nested elems. If confused, I recommend you to review
+                    Nell's lecture on html.</p>
+                <p>Create multiple copies with *. </p>
+                <img src="./images/1blog-10.png" alt="Blog one picture ten">
+                <p>The sky's the limit for creating expressions and this is where Emmet especially shines.</p>
+                <img src="./images/1blog-11.png" alt="Blog one picture eleven">
+                <p>You can also add text content to these elements directly from the expressions using {}. For lists,
+                    you can use $ to number them correspondingly. So for our previous example:</p>
+                <img src="./images/1blog-12.png" alt="Blog one picture twelve">
+                <p>Whew. Imagine writing these out manually.</p>
+                <p>Personally, I code with emmet in short successive bursts rather than a long one-liner (like the one
+                    above), but I find it really useful for the layering and identifier-naming shenanigans in my code.
+                    It also prevents potential opening and closing bracket bugs in your HTML code.</p>
+                <p>If you're using a commonly recognised attribute, you can also use :.</p>
+                <img src="./images/1blog-12.png" alt="Blog one picture thirteen">
+                <p>So far, I've been only displaying the powers of Emmet in HTML but you can also use emmet expressions
+                    in CSS. But because this guide is getting too long, here's a quick example: </p>
+                <img src="./images/1blog-13.png" alt="Blog one picture twelve">
+                <p>I encourage you to get used to Emmet as it allows you to not worry as much of the HTML/CSS syntax,
+                    but rather the logic and implementation in the design of your website. </p>
+                <p>With Emmet, you'll be spitting out HTML and CSS faster than a caffeinated squirrel on a keyboard.</p>
+                <p>So far, I've covered what I do 80% of the time with emmet but this barely scratches the surface of
+                    what Emmet has to offer. But if you want to learn more:</p>
+                <p>These are the docs for, what I think, the most useful keyboard shortcuts with Emmet: </p>
+                <p><a
+                        href="https://docs.emmet.io/actions/wrap-with-abbreviation/ ">https://docs.emmet.io/actions/wrap-with-abbreviation/</a>
+                </p>
+                <p><a href="https://docs.emmet.io/actions/remove-tag/">https://docs.emmet.io/actions/remove-tag/</a></p>
+                <p>Here's a cheatsheet for you to reference back to: <a
+                        href="https://docs.emmet.io/cheat-sheet/">https://docs.emmet.io/actions/remove-tag/</a></p>
+                <p>Let me know if you want to learn more useful tips and tricks for HTML/CSS/Js in the future of this
+                    course. Any questions, let me know in the comments.</p>
+                <p>Thanks @Iuliia Drugova for allowing me to post this.</p>
+            </div>
+        </section>
+    </article>
+
+
+
+</body>
+
+</html>

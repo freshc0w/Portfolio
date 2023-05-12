@@ -185,7 +185,7 @@ section.hero {
 	display: grid;
 	grid-template: 1fr / 1fr 1fr;
 	width: min(95vw, 1140px);
-	font-family: "Poppins", sans-serif;
+	font-family: var(--global-typography-font-family-primary);
 	z-index: 2;
 	gap: 20px;
 }
@@ -272,7 +272,7 @@ section.hero {
 }
 
 /* Contact and btn styling */
-.hero__actions button {
+.default-btn1 {
 	font-weight: var(--global-typography-font-weight-accent);
 	font-family: var(--global-typography-font-family-text);
 	color: var(--global-color-primary);
@@ -288,7 +288,7 @@ section.hero {
 }
 
 /* Button hover animation */
-.hero__actions button::before {
+.default-btn1::before {
 	color: var(--global-color-primary);
 	content: "";
 	display: block;
@@ -422,20 +422,41 @@ About section styling
 	transform: translateY(5px);
 }
 
-.about-wrapper > p > strong {
-	color: var(--global-color-accent);
+@keyframes typewriter2 {
+    0% {
+        width: 0;
+    }
+    20%,
+    100% {
+        width: 150px;
+        border-color: transparent;
+    }
 }
 
-@keyframes typewriter2 {
-	0% {
-		width: 0;
-	}
-	20%,
-	100% {
-		width: 150px;
-		border-color: transparent;
-	}
+.about-wrapper > p > strong {
+    color: var(--global-color-accent);
 }
+
+.direct-about-btn,
+.direct-projects-btn {
+    background-color: var(--global-color-accent-light);
+    opacity: 0.8;
+    box-shadow: 0 1px 3px white, 0 0 5px rgba(255, 255, 255, 0.4);
+    color: black;
+    font-weight: 850;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease-out,
+                transform 0.3s ease-in-out,
+                text-shadow 0.2s linear;
+}
+
+.direct-about-btn:hover,
+.direct-projects-btn:hover {
+    background-color: var(--global-color-accent);
+    transform: scaleX(1.1) scaleY(1.05);
+    text-shadow: 0 0 8px var(--global-color-accent-light);
+}
+
 /* About section styling finish */
 
 /*
@@ -528,8 +549,8 @@ Projects section styling
 
 .project-display-btn {
 	cursor: pointer;
-	margin-top: 1vw;
-	margin-bottom: 1vw;
+	margin-top: 0.5vw;
+	margin-bottom: 0.75vw;
 	padding: 4px 8px;
 	background-color: transparent;
 	outline: transparent;
@@ -550,10 +571,10 @@ Projects section styling
 
 .projects-display {
 	position: relative;
-	height: 85vh;
+	height:80vh;
 	width: 80vw;
 	display: flex;
-	font-family: "Poppins", sans-serif;
+    font-family: var(--global-typography-font-family-primary);
 	border: 1.5px solid white;
 }
 
@@ -834,6 +855,10 @@ Shorten top to accommodate for this. */
 		width: 100%;
 	}
 }
+
+.direct-projects-btn {
+    /* margin-top: 1rem; */
+}
 /* Propjects styling end */
 
 /* 
@@ -851,7 +876,7 @@ Blog styling
 	position: relative;
 	display: flex;
 	gap: 2vw;
-	font-family: "Poppins", sans-serif;
+    font-family: var(--global-typography-font-family-primary);
 }
 
 .blog {
@@ -1047,7 +1072,7 @@ Contact form styling
 	background-color: var(--global-bg-color-darkgrey);
 	color: var(--global-bg-color-light);
 	font-size: var(--global-typography-font-size-primary);
-	font-family: "Poppins", sans-serif;
+    font-family: var(--global-typography-font-family-primary);
 	padding: 8px;
 	box-shadow: 0 0 3px white;
 }
@@ -1146,3 +1171,137 @@ footer > .fa-github {
 }
 
 /* Footer styling finish */
+
+
+/*
+BLOGS PAGE STYLING
+*/
+.blogs-intro-wrapper {
+    padding-top: clamp(1rem, 8vw, 3rem);
+    margin-bottom: -3.5rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1.4fr minmax(400px, 1.2fr);
+    grid-auto-flow: column;
+    gap: 1.5rem;
+}
+
+.blog-info {
+    grid-column: 1 / 2;
+    padding: 1rem 0;
+}
+
+.blog-picture {
+    width: 100%;
+}
+
+.blogs-intro-wrapper > .blog-info > h1.blog__title {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.blogs-intro-wrapper > .blog-info > h2.blog__date {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+.blogs-intro-wrapper > .blog-info > p.blog__desc {
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+}
+
+.blog-content-wrapper {
+    padding-inline: 1.5vw;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 0.5rem;
+}
+
+.blog-scrnshot-img {
+    width: clamp(450px, 50vw, 600px);
+}
+
+.blog-content-wrapper > p {
+    font-family: var(--global-typography-font-family-primary);
+    word-break: break-word;
+    text-align: justify;
+    font-size: clamp(var(--global-typography-font-size-secondary), 2vw, var(--global-typography-font-size-primary))
+}
+
+.blog-content-wrapper > p > a {
+    color: aqua;
+}
+
+.blog-content-wrapper > img {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 800px) {
+    .blogs-intro-wrapper {
+        padding-top: 8vh;
+        margin-bottom: -3.5rem;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .blog-picture {
+        width: 80%;
+        min-width: 380px;
+    }
+    
+    .blogs-intro-wrapper > .blog-info > .blog__type {
+        margin: 0.75rem 0;
+    }
+
+    .blog-content-wrapper > img {
+        max-width: 100%;
+    }
+
+}
+
+/* BLOGS PAGE FINISH */
+
+/*
+ABOUT ME PAGE STYLING
+*/
+
+.about__layout-wrapper {
+    width: 100svw;
+    height: 100svh;
+    display: grid;
+    grid-template-columns: 70vw 730px;
+    /* grid-template-rows: 3fr 1.5fr; */
+    overflow: hidden;
+}
+
+.about__content {
+    z-index: 2;
+    padding-inline: clamp(55px, 8vw, 130px);
+    transform: skewX(-10deg);
+    overflow: visible;
+    background-color: var(--global-bg-color-primary);
+    font-family: var(--global-typography-font-family-text);
+    padding-top: clamp(100px, 7.5vw, 150px);
+}
+
+.about__picture {
+    grid-column: 2 / -1;
+    grid-row: 1/ -1;
+    padding: 0;
+    height: 100vh;
+    /* width: 100%; */
+}
+
+.about__picture > img {
+    width: 100%;
+    /* height: 100%; */
+    transform: translateX(-80px);
+    /* width: 300px; */
+    /* transform: translateX(-5vw); */
+    /* height: 100%; */
+}
+
+/* Need to add breakpoints to centralised picture */
+@media screen and (max-width: 1000px) {
+    .about__layout-wrapper {
+        grid-template-columns: 55vw 730px;
+    }
+
+}
