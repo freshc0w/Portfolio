@@ -1280,11 +1280,25 @@ ABOUT ME PAGE STYLING
     font-family: var(--global-typography-font-family-text);
     padding-top: clamp(100px, 7.5vw, 150px);
     line-height: 1.5rem;
+    overflow: auto;
 }
 
 .about__content > p {
     /* margin-top: 1.5vw; */
     margin-top: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.about__content > p,
+.about__content li {
+    color: var(--global-bg-color-lightgrey);
+}
+
+.about__content > h1:last-of-type {
+    margin-top: 2vw;
+}
+
+.experience-info-wrapper > h2 {
+    margin-top: 1vw;
 }
 
 .about__picture {
@@ -1304,18 +1318,71 @@ ABOUT ME PAGE STYLING
     /* height: 100%; */
 }
 
+.about-info {
+    list-style-type: square;
+}
+
 /* Need to add breakpoints to centralised picture */
 @media screen and (max-width: 1000px) {
     .about__layout-wrapper {
-        grid-template-columns: 55vw 730px;
+        grid-template-columns: 70vw 730px;
     }
+    
 
     .about__content {
         padding-inline: 40px;
     }
 
-    .about__content > p {
-        font-size: 0.8rem;
+    .about__content > p,
+    .about__content li {
+        font-size: var(--global-typography-font-size-secondary);
     }
 
+    .about__content h1 {
+        font-size: 1.5rem;
+    }
+
+    .about__content h2 {
+        font-size: 1.25rem;
+    }
+
+    .about__picture > img {
+        /* transform: translateX(70px); */
+    }
+
+    .about__content > h1:last-of-type,
+    .experience-info-wrapper {
+        /* Need transform to fit content to the page since container is skewed */
+        transform: translateX(50px); 
+    }
+}
+
+@media screen and (max-width: 725px) {
+    .about__layout-wrapper {
+        transform: none;
+        height: auto;
+        width: auto;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .about__content {
+        transform: none;
+        padding-top: 1.25rem;
+    }
+
+    .about__picture {
+        height: auto;
+    }
+    
+    .about__picture > img {
+        transform: none;
+        height: auto;
+    }
+
+    .about__content > h1:last-of-type,
+    .experience-info-wrapper {
+        transform: none;
+    }
 }
