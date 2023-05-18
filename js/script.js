@@ -1,26 +1,34 @@
 /* 
-Navbar functionality that diseappears when scroll down. 
+Navbar functionality that diseappears when scroll down.
+Concept inspired by w3schools "hide navbar on scroll" - 
+url: "https://www.w3schools.com/howto/howto_js_navbar_hide_scroll.asp"
 */
+const navBar = document.getElementById("nav-bar");
+
+// Track the number of pixels the website is currently scrolled down by.
 let prevPosScroll = window.pageYOffset;
-window.onscroll = () => {
-	const navBar = document.getElementById("nav-bar");
-	let currentPosScroll = window.pageYOffset;
-	if (prevPosScroll < currentPosScroll) {
-		navBar.style.top = "-90px";
-		navBar.style.opacity = "0";
-	} else {
-		navBar.style.top = "0px";
-		navBar.style.opacity = "1";
-	}
-	prevPosScroll = currentPosScroll;
-};
-/* Nav bar hide functionality end*/
+window.onscroll = () => { // When user scrolls, track current pageYOffset value.
+    let currPosScroll = window.pageYOffset;
+
+    // When user scrollls down, the curr scrolled position will be greater than
+    // the prev scrolled position. If this happens, hide navbar to the top. 
+    // Otherwise, make it visible.
+    navBar.style.top = prevPosScroll < currPosScroll ? "-90px" : "0px";
+
+    // Style opacity of nav bar for a smoother disappearance effect.
+    navBar.style.opacity = prevPosScroll < currPosScroll ? "0" : "1";
+
+    // Make sure to update previous scrolled position.
+    prevPosScroll = currPosScroll;
+}
+
+/* Nav bar hide functionality end */
 
 /*
 Skills carousel animation and toggle
 */
 
-let currentTransform = 0;
+let currTrnsfrmedPos = 0;
 let setContainersAddedCounter = 0; // Keeps track of how many containers added to carousel.
 let nextCounter = 0; // Keeps track of the number of "next" event.
 
@@ -50,15 +58,14 @@ skills["css"] = {
 	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
 };
 
-// Temporary (To be learnt)
-// skills["react.js"] = {
-// 	desc: "react.js icon",
-// 	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-// };
-// skills["node.js"] = {
-// 	desc: "node.js icon",
-// 	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-// };
+skills["react.js"] = {
+	desc: "react.js icon",
+	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+};
+skills["node.js"] = {
+	desc: "node.js icon",
+	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+};
 
 skills["bootstrap"] = {
 	desc: "bootstrap icon",
@@ -88,8 +95,8 @@ insertContainersAfter();
 
 slideNext = () => {
 	// Move carousel by a container's width.
-	currentTransform -= 115;
-	skillsTrain.style.transform = `translateX(${currentTransform}px)`;
+	currTrnsfrmedPos -= 115;
+	skillsTrain.style.transform = `translateX(${currTrnsfrmedPos}px)`;
 
 	if (!((nextCounter % Object.keys(skills).length) / 1.5)) {
 		insertContainersAfter();
@@ -107,7 +114,7 @@ slideNext = () => {
 
 		nextCounter = 0;
 		setContainersAddedCounter = 0;
-		currentTransform = 0; // Initialise skill train back to default pos.
+		currTrnsfrmedPos = 0; // Initialise skill train back to default pos.
 		insertContainersAfter();
 	}
 };
@@ -118,10 +125,10 @@ nextBtn.addEventListener("click", slideNext);
 setInterval(slideNext, 2000);
 
 slidePrev = () => {
-	currentTransform += 115;
+	currTrnsfrmedPos += 115;
 	// If at the start of carousel, prevent sliding.
-	if (currentTransform >= 0) currentTransform = 0;
-	skillsTrain.style.transform = `translateX(${currentTransform}px)`;
+	if (currTrnsfrmedPos >= 0) currTrnsfrmedPos = 0;
+	skillsTrain.style.transform = `translateX(${currTrnsfrmedPos}px)`;
 };
 
 prevBtn.addEventListener("click", slidePrev);
