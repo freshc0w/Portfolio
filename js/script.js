@@ -41,7 +41,7 @@ const allSkills = [
 	"javascript",
 	"html5",
 	"css3",
-    "figma",
+	"figma",
 	"react",
 	"nodejs",
 	"bootstrap",
@@ -49,8 +49,8 @@ const allSkills = [
 	"webpack",
 	"rstudio",
 	"mysql",
-    "mongodb",
-    "angularjs",
+	"mongodb",
+	"angularjs",
 ];
 
 updateSkills(allSkills, skills);
@@ -70,26 +70,27 @@ updateSkills(allSkills, skills);
  * @returns {void}
  */
 function updateSkills(skillsCollection, skillsMap) {
-    /**
-     * Helper fnc that maps an invididual skill to its relevant info.
-     * @param {String} name Skill's name
-     * @param {String} desc Skill's icon description
-     * @param {String} path Skill's url path to fetch image from devicon.dev 
-     * @param {Object} skillsMap Object that maps the skill's name to its
-     * relevant info
-     */
+	/**
+	 * Helper fnc that maps an invididual skill to its relevant info.
+	 * @param {String} name Skill's name
+	 * @param {String} desc Skill's icon description
+	 * @param {String} path Skill's url path to fetch image from devicon.dev
+	 * @param {Object} skillsMap Object that maps the skill's name to its
+	 * relevant info
+	 */
 	const addSkillToCollection = (name, desc, path, skillsMap) => {
 		try {
 			skillsMap[name] = { desc, path };
-		} catch (err) { // e.g. if path to icon not found
+		} catch (err) {
+			// e.g. if path to icon not found
 			console.error(`${name} icon not found. Please check name spelling. \n
             Error msg: ${err}.`);
-            // error squashed. iconDesc will be displayed in the skill container.
+			// error squashed. iconDesc will be displayed in the skill container.
 		}
 	};
 
-    // Map each relevant skill with its info in the skills map Object using the
-    // helper fnc.
+	// Map each relevant skill with its info in the skills map Object using the
+	// helper fnc.
 	skillsCollection.forEach((skill) =>
 		addSkillToCollection(
 			skill,
@@ -108,16 +109,41 @@ let currTrnsfrmedPos = 0;
 // that is added to the carousel.
 let setContainersAddedCounter = 0;
 let nextCounter = 0; // Keeps track of the number of "next" event.
+
+// skillsTrain will be continously moving to the right using the translateX
+// style. User can also manually move this "train" left and/or right by clicking
+// on the btns. The set of skills will also be appended on the train after a set
+// amount of "next" activations. This gives a carousel visual effect.
 const skillsTrain = document.querySelector(".skills-train");
+
+// Shift left and right btns
 const nextBtn = document.querySelector(".next");
 const prevBtn = document.querySelector(".prev");
+
+// Initialise skill containers into the train. See fnc further below.
 insertContainersAfter();
 
-slideNext = () => {
-	// Move carousel by a container's width.
-	currTrnsfrmedPos -= 115;
-	skillsTrain.style.transform = `translateX(${currTrnsfrmedPos}px)`;
+/**
+ * Shifts the targeted element ot the right or left side by a certain amount of
+ * pixels.
+ * @param {Element} element Referenced DOM element
+ * @param {Number} translateDist Integer dictating the translated distance the
+ * element would be shifted by.
+ * Note: A negative integer shifts the element to the right.
+ * Positive to the left side.
+ */
+function slideHorizontal(element, translateDist) {
+	element.style.transform = `translateX(${translateDist}px)`;
+}
 
+slideNext = () => {
+	// Move carousel train to the right by a container's width (115px).
+	slideHorizontal(skillsTrain, (currTrnsfrmedPos -= 115));
+
+	// Appends more skill containers to the train after a set amount of clicks
+	// using modulo operator.
+	// e.g. if there are 30 total skills, a new set of skills will be appended
+	// after 20 "next" activations.
 	if (!((nextCounter % Object.keys(skills).length) / 1.5)) {
 		insertContainersAfter();
 		setContainersAddedCounter++;
@@ -125,68 +151,87 @@ slideNext = () => {
 
 	nextCounter++;
 
-	// Prevent adding too many items to the web page.
+	// Prevent adding too many items to the web page. If more than 5 entire
+	// trains are added, remove all skill containers and reinitialise position.
 	if (setContainersAddedCounter >= 5) {
-		// Clear all items in carousel.
+		// Clear all items in skills carousel.
 		while (skillsTrain.firstChild) {
 			skillsTrain.removeChild(skillsTrain.lastChild);
 		}
 
-		nextCounter = 0;
-		setContainersAddedCounter = 0;
-		currTrnsfrmedPos = 0; // Initialise skill train back to default pos.
+		// Initialise skill train carousel back to default pos.
+		currTrnsfrmedPos = nextCounter = setContainersAddedCounter = 0;
+
+		// Reinitialise all skill containers to fill carousel.
 		insertContainersAfter();
 	}
 };
 
-nextBtn.addEventListener("click", slideNext);
+// Link click event with slideNext function for nextBtn.
+nextBtn.addEventListener("click", slideNext); 
 
 // Add autoplay for carousel;
+// See https://www.w3schools.com/jsref/met_win_setinterval.asp
 setInterval(slideNext, 2000);
 
 slidePrev = () => {
-	currTrnsfrmedPos += 115;
-	// If at the start of carousel, prevent sliding.
-	if (currTrnsfrmedPos >= 0) currTrnsfrmedPos = 0;
-	skillsTrain.style.transform = `translateX(${currTrnsfrmedPos}px)`;
+	slideHorizontal(
+		skillsTrain,
+		// If at the start of carousel, prevent sliding to the left.
+		(currTrnsfrmedPos += currTrnsfrmedPos < 0 ? 115 : 0)
+	);
 };
 
+// Link click event with slidePrev fnc for prevBtn.
 prevBtn.addEventListener("click", slidePrev);
 
+/**
+ * 
+ * @param {String} iconName Skill / Technology image name 
+ * @param {String} iconDesc Brief description of the targeted image
+ * @param {String} iconPath image src url path link. 
+ * @param {Number} num Tracker that identifies the skill number.
+ * @returns {Element} A container div that houses all relevant information
+ * regarding the skill.
+ */
 function makeSkillContainer(iconName, iconDesc, iconPath, num) {
-	const container = document.createElement("div");
-	const skillIcon = document.createElement("img");
-	const skillName = document.createElement("h1");
-	const skillNum = document.createElement("span");
+	const container = document.createElement("div"); 
+
+	const skillIcon = document.createElement("img"); // Skill icon image
+	const skillName = document.createElement("h1"); // Skill name
+	const skillNum = document.createElement("span"); // Identifier
 
 	container.classList.add("tool-container");
 	skillIcon.classList.add("skill-icon");
 	skillName.classList.add("skill-name");
 	skillNum.classList.add("skill-num");
 
-    skillIcon.setAttribute("src", iconPath);
-    skillIcon.setAttribute("alt", iconDesc);
+	skillIcon.setAttribute("src", iconPath);
+	skillIcon.setAttribute("alt", iconDesc);
 	skillName.textContent = iconName;
 	skillNum.textContent = num;
 
-	container.appendChild(skillIcon);
-	container.appendChild(skillName);
-	container.appendChild(skillNum);
+	[skillIcon, skillName, skillNum].forEach((elem) =>
+		container.appendChild(elem)
+	);
 	return container;
 }
 
-function insertContainersAfter() {
-	let count = 0;
+/**
+ * Append all skills to skillsTrain. 
+ * @param {Number} numTracker Identity number that keeps track of each skill.
+ * e.g. first skill is 0, second skill is 1...
+ */
+function insertContainersAfter(numTracker = 0) {
 	for (let skill in skills) {
 		skillsTrain.appendChild(
 			makeSkillContainer(
 				skill,
 				skills[skill].desc,
 				skills[skill].path,
-				count
+				numTracker++ // increment identityTracker
 			)
 		);
-		count++;
 	}
 }
 
