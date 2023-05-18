@@ -7,20 +7,21 @@ const navBar = document.getElementById("nav-bar");
 
 // Track the number of pixels the website is currently scrolled down by.
 let prevPosScroll = window.pageYOffset;
-window.onscroll = () => { // When user scrolls, track current pageYOffset value.
-    let currPosScroll = window.pageYOffset;
+window.onscroll = () => {
+	// When user scrolls, track current pageYOffset value.
+	let currPosScroll = window.pageYOffset;
 
-    // When user scrollls down, the curr scrolled position will be greater than
-    // the prev scrolled position. If this happens, hide navbar to the top. 
-    // Otherwise, make it visible.
-    navBar.style.top = prevPosScroll < currPosScroll ? "-90px" : "0px";
+	// When user scrollls down, the curr scrolled position will be greater than
+	// the prev scrolled position. If this happens, hide navbar to the top.
+	// Otherwise, make it visible.
+	navBar.style.top = prevPosScroll < currPosScroll ? "-90px" : "0px";
 
-    // Style opacity of nav bar for a smoother disappearance effect.
-    navBar.style.opacity = prevPosScroll < currPosScroll ? "0" : "1";
+	// Style opacity of nav bar for a smoother disappearance effect.
+	navBar.style.opacity = prevPosScroll < currPosScroll ? "0" : "1";
 
-    // Make sure to update previous scrolled position.
-    prevPosScroll = currPosScroll;
-}
+	// Make sure to update previous scrolled position.
+	prevPosScroll = currPosScroll;
+};
 
 /* Nav bar hide functionality end */
 
@@ -28,66 +29,85 @@ window.onscroll = () => { // When user scrolls, track current pageYOffset value.
 Skills carousel animation and toggle
 */
 
-let currTrnsfrmedPos = 0;
-let setContainersAddedCounter = 0; // Keeps track of how many containers added to carousel.
-let nextCounter = 0; // Keeps track of the number of "next" event.
-
+// Initialise a skills map that maps the programming language's name to it's
+// description and url path link.
 let skills = {};
-skills["python"] = {
+
+// Array filled with skills & languages I'm familiar with.
+const allSkills = [
+	"python",
+	"java",
+	"c",
+	"javascript",
+	"html5",
+	"css3",
+    "figma",
+	"react",
+	"nodejs",
+	"bootstrap",
+	"git",
+	"webpack",
+	"rstudio",
+	"mysql",
+    "mongodb",
+    "angularjs",
+];
+
+updateSkills(allSkills, skills);
+
+/**
+ * Takes in an array consisting of all the different skills / programming
+ * languages and map it to an object with its icon description and url path link
+ * from https://devicon.dev/ .
+ * e.g. if programming lang name is "python":
+ * skills["python"] = {
 	desc: "python icon",
 	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
 };
-skills["java"] = {
-	desc: "java icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-};
-skills["C"] = {
-	desc: "C icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
-};
-skills["javascript"] = {
-	desc: "javascript icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg",
-};
-skills["html"] = {
-	desc: "html icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-};
-skills["css"] = {
-	desc: "css icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-};
+ * @param {Array} skillsCollection Collection of familiar skills and technologies.
+ * @param {Object} skillsMap A map object detailing it's description and url
+ * retrieval path link.
+ * @returns {void}
+ */
+function updateSkills(skillsCollection, skillsMap) {
+    /**
+     * Helper fnc that maps an invididual skill to its relevant info.
+     * @param {String} name Skill's name
+     * @param {String} desc Skill's icon description
+     * @param {String} path Skill's url path to fetch image from devicon.dev 
+     * @param {Object} skillsMap Object that maps the skill's name to its
+     * relevant info
+     */
+	const addSkillToCollection = (name, desc, path, skillsMap) => {
+		try {
+			skillsMap[name] = { desc, path };
+		} catch (err) { // e.g. if path to icon not found
+			console.error(`${name} icon not found. Please check name spelling. \n
+            Error msg: ${err}.`);
+            // error squashed. iconDesc will be displayed in the skill container.
+		}
+	};
 
-skills["react.js"] = {
-	desc: "react.js icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-};
-skills["node.js"] = {
-	desc: "node.js icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-};
+    // Map each relevant skill with its info in the skills map Object using the
+    // helper fnc.
+	skillsCollection.forEach((skill) =>
+		addSkillToCollection(
+			skill,
+			`${skill} icon`,
+			`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill}/${skill}-original.svg`,
+			skillsMap
+		)
+	);
+}
 
-skills["bootstrap"] = {
-	desc: "bootstrap icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-};
-skills["git"] = {
-	desc: "git icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-};
-skills["webpack"] = {
-	desc: "webpack icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg",
-};
-skills["Rstudio"] = {
-	desc: "R icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg",
-};
-skills["mySQL"] = {
-	desc: "SQL icon",
-	path: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-};
+// Track the total translated position of the carousel at a current state.
+// This helps "move" the carousel along based on the previous tracked position.
+let currTrnsfrmedPos = 0;
 
+// Tracks the amount of containers that holds all the relevant skill containers
+// that is added to the carousel.
+let setContainersAddedCounter = 0;
+let nextCounter = 0; // Keeps track of the number of "next" event.
 const skillsTrain = document.querySelector(".skills-train");
 const nextBtn = document.querySelector(".next");
 const prevBtn = document.querySelector(".prev");
@@ -144,8 +164,8 @@ function makeSkillContainer(iconName, iconDesc, iconPath, num) {
 	skillName.classList.add("skill-name");
 	skillNum.classList.add("skill-num");
 
-	skillIcon.src = iconPath;
-	skillIcon.alt = iconDesc;
+    skillIcon.setAttribute("src", iconPath);
+    skillIcon.setAttribute("alt", iconDesc);
 	skillName.textContent = iconName;
 	skillNum.textContent = num;
 
@@ -159,7 +179,12 @@ function insertContainersAfter() {
 	let count = 0;
 	for (let skill in skills) {
 		skillsTrain.appendChild(
-			makeSkillContainer(skill, skills[skill].desc, skills[skill].path, count)
+			makeSkillContainer(
+				skill,
+				skills[skill].desc,
+				skills[skill].path,
+				count
+			)
 		);
 		count++;
 	}
@@ -197,9 +222,9 @@ function expands() {
 	});
 
 	// Dampen blur overlay for clarity of image.
-	projectBlurOverlays.forEach(blurOverlay => {
+	projectBlurOverlays.forEach((blurOverlay) => {
 		blurOverlay.style.backdropFilter = "blur(0px)";
-	})
+	});
 }
 
 projectCloseBtns.forEach((btn) => {
@@ -220,31 +245,34 @@ projectCloseBtns.forEach((btn) => {
 			modal.style.visibility = "visible";
 			modal.style.display = "flex";
 		});
-		projectBlurOverlays.forEach(blurOverlay => {
+		projectBlurOverlays.forEach((blurOverlay) => {
 			blurOverlay.style.backdropFilter = "blur(3.5px)";
-		})
+		});
 	});
 });
 
-
 /* Form */
-const submitFormBtn = document.querySelector('.submit-form-btn');
-const contactForm = document.querySelector('form');
+const submitFormBtn = document.querySelector(".submit-form-btn");
+const contactForm = document.querySelector("form");
 submitFormBtn.addEventListener("click", (e) => {
 	e.preventDefault();
 
 	// Alerts users/employers that backend collecting info fnc is currently
 	// down.
-	const alertText = document.createElement('p');
-	alertText.classList.add('contact__alert-text');
-	
-	const userName = document.getElementById("input-name") ? document.getElementById("input-name") : "";
-	userName.value.style = "color: blue;"
-	alertText.textContent = "I apologise " + userName.value + ". Backend for info collection is" 
-		+ " not set up yet. Try contacting me in one of the other links.";
+	const alertText = document.createElement("p");
+	alertText.classList.add("contact__alert-text");
 
-	
-	if(!document.contains(document.querySelector('.contact__alert-text'))) {
+	const userName = document.getElementById("input-name")
+		? document.getElementById("input-name")
+		: "";
+	userName.value.style = "color: blue;";
+	alertText.textContent =
+		"I apologise " +
+		userName.value +
+		". Backend for info collection is" +
+		" not set up yet. Try contacting me in one of the other links.";
+
+	if (!document.contains(document.querySelector(".contact__alert-text"))) {
 		contactForm.appendChild(alertText);
 	}
 });
@@ -254,5 +282,3 @@ submitFormBtn.addEventListener("click", (e) => {
 // function initialisePage() {
 
 // }
-
-
