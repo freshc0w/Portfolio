@@ -76,6 +76,7 @@ function updateSkills(skillsCollection, skillsMap) {
 	 * @param {String} path Skill's url path to fetch image from devicon.dev
 	 * @param {Object} skillsMap Object that maps the skill's name to its
 	 * relevant info
+     * @returns {void}
 	 */
 	const addSkillToCollection = (name, desc, path, skillsMap) => {
 		try {
@@ -147,7 +148,7 @@ slideNext = () => {
 	// using modulo operator.
 	// e.g. if there are 30 total skills, a new set of skills will be appended
 	// after 20 "next" activations. This allows the last 10 to still appear
-    // in the train.
+	// in the train.
 	if (!((nextCounter % Object.keys(skills).length) / 1.5)) {
 		insertContainersAfter();
 		setContainersAddedCounter++;
@@ -178,10 +179,9 @@ nextBtn.addEventListener("click", slideNext);
 // See https://www.w3schools.com/jsref/met_win_setinterval.asp
 setInterval(slideNext, 2000);
 
-
 /**
  * Shifts the carousel to the left by a certain width. If carousel's position
- * is at the start, do nothing. 
+ * is at the start, do nothing.
  */
 slidePrev = () => {
 	slideHorizontal(
@@ -210,7 +210,7 @@ function makeSkillContainer(iconName, iconDesc, iconPath, num) {
 	const skillName = document.createElement("h1"); // Skill name
 	const skillNum = document.createElement("span"); // Identifier
 
-    // Add all relevant classes for styling
+	// Add all relevant classes for styling
 	container.classList.add("tool-container");
 	skillIcon.classList.add("skill-icon");
 	skillName.classList.add("skill-name");
@@ -218,7 +218,7 @@ function makeSkillContainer(iconName, iconDesc, iconPath, num) {
 
 	skillIcon.setAttribute("src", iconPath); // Link src path to retrieve img
 	skillIcon.setAttribute("alt", iconDesc); // Image name
-	skillName.textContent = iconName; 
+	skillName.textContent = iconName;
 	skillNum.textContent = num;
 
 	[skillIcon, skillName, skillNum].forEach((property) =>
@@ -231,6 +231,7 @@ function makeSkillContainer(iconName, iconDesc, iconPath, num) {
  * Append all skills to skillsTrain.
  * @param {Number} numTracker Identity number that keeps track of each skill.
  * e.g. first skill is 0, second skill is 1...
+ * @returns {void}
  */
 function insertContainersAfter(numTracker = 0) {
 	for (let skill in skills) {
@@ -258,7 +259,7 @@ const projectModals = document.querySelectorAll(".project__modal-container");
 // image of the project when the project container is clicked upon.
 const projectOverlays = document.querySelectorAll(".project-overlay");
 
-// Blur overlays darkens the project's background-image to make the foreground 
+// Blur overlays darkens the project's background-image to make the foreground
 // information standout.
 const projectBlurOverlays = document.querySelectorAll(".blur-overlay");
 
@@ -333,34 +334,163 @@ projectCloseBtns.forEach((btn) => {
 		});
 	});
 });
+
 /* Project event listeners end */
 
-/* Form */
+/* Form validation */
 const submitFormBtn = document.querySelector(".submit-form-btn");
 const contactForm = document.querySelector("form");
-submitFormBtn.addEventListener("click", (e) => {
+const nameInput = document.getElementById("input-name");
+const emailInput = document.getElementById("input-email");
+const messageInput = document.getElementById("input-message");
+
+// On submission, validate required form inputs.
+contactForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 
-    submitSuccessful()
+	if (validateForm(nameInput, emailInput)) {
+		// Alert users backend functionality is currently down.
+		submitSuccessful();
+
+		// Clear all inputs in form for convenience.
+		clearInputs(nameInput, emailInput, messageInput);
+	}
 });
 
+/**
+ * Factory function that validates all inputs checking if any content exists,
+ * or email is valid. If any invalid inputs are found, an invalid msg error
+ * will be displayed at the bottom of the form with its content dependent
+ * on the type of invalid error.
+ *
+ * Returns true if form is validated. False otherwise.
+ * @param  {...any} inputs DOM input elements.
+ * @returns {boolean}      Boolean defining the current state of the form.
+ */
+function validateForm(...inputs) {
+	// If a prior invalid input msg already exist, remove it to prevent
+	// adding duplicates.
+	if (document.querySelector(".invalid-input-errormsg")) {
+		document.querySelector(".invalid-input-errormsg").remove();
+	}
+
+	// Create invalid error message.
+	let invalidInputMsg = document.createElement("p");
+	invalidInputMsg.classList.add("invalid-input-errormsg");
+
+	/**
+	 * Returns true if content exists in specified input. false otherwise.
+	 * @param {Element} input Input that stores user's input value
+	 * @returns {Boolean}
+	 */
+	const validateContent = (input) => {
+		return !input.value ? false : true;
+	};
+
+	/**
+	 * Returns true if all required inputs in arguments has content. false
+	 * otherwise.
+	 * Fnc also updates the invalidMsg depending on which input does not contain
+	 * any value. e.g. if name and email doesn't contain a value, both inputs'
+	 * name will be appended to the invalidMsg string.
+	 * @param {Array} allInputs Array of input DOM elements
+	 * @returns {Boolean}
+	 */
+	const validateAllContent = (allInputs) => {
+		let hasContent = true;
+		allInputs.forEach((input) => {
+			// If no input found, change hasContent to be false and show error
+			// with input outline.
+			if (!validateContent(input)) {
+				hasContent = false;
+
+				// Add red outline for input type.
+				input.classList.add("invalid-input");
+
+				// Remove red outline when user types something in.
+				input.addEventListener("keydown", (e) => {
+					e.target.classList.remove("invalid-input");
+				});
+
+				// Update invalidInputMsg
+				const inputLabel = input.previousElementSibling.textContent;
+
+				// Substring required to remove the ":".
+				// e.g. "Name:" -> "Name"
+				invalidInputMsg.textContent += ` ${inputLabel.substring(
+					0,
+					inputLabel.length - 1
+				)} and`;
+			}
+		});
+		return hasContent;
+	};
+
+	/**
+	 * Returns true if email input's value matches valid email regex. false
+	 * otherwise.
+	 * @param {Element} input Email input DOM element
+	 * @returns {Boolean}
+	 */
+	const validateEmail = (input) => {
+		// Email regex retrieved from w3resource for email validation
+		// url link: https://www.w3resource.com/javascript/form/email-validation.php
+		const validMailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		return input.value.match(validMailFormat);
+	};
+
+	let hasInputs = validateAllContent([...inputs]);
+	let validEmail = validateEmail(emailInput);
+
+	// If required input has no content, or an invalid email is entered,
+	// add invalid input error msg.
+	if (!hasInputs || !validEmail) {
+		// Only add "no content" error msg if hasInputs is false.
+        // Need .substring to remove the last "and" in the str.
+		invalidInputMsg.textContent = !hasInputs
+			? `${invalidInputMsg.textContent.substring(
+					0,
+					invalidInputMsg.textContent.length - 4
+			  )} has not been filled out.\n`
+			: "\n";
+
+		// Only add "invalid email" error msg if validEmail is false.
+		invalidInputMsg.textContent += !validEmail
+			? "Please enter a valid email."
+			: "";
+
+		contactForm.appendChild(invalidInputMsg);
+	}
+
+	// If any of the inputs is invalid, return false. true otherwise.
+	return hasInputs && validEmail;
+}
+
+/**
+ * Alert users that backend info is currently down.
+ * @returns {void}
+ */
 function submitSuccessful() {
-    // Alerts users/employers that backend collecting info fnc is currently
-    // down.
-    const alertText = document.createElement("p");
-    alertText.classList.add("contact__alert-text");
-    const userName = document.getElementById("input-name").value;
+	const alertText = document.createElement("p");
+	alertText.classList.add("contact__alert-text");
+
+	const userName = document.getElementById("input-name").value;
 	alertText.textContent = `I apologise ${userName}. 
     Backend for info collection is not set up yet.
     Try contacting me in of the other links.`;
-    
-    // Make sure not to repeatedly add alert message.
-    if(!document.contains(document.querySelector(".contact__alert-text"))) {
-        contactForm.appendChild(alertText);
-    }
+
+	// Make sure not to repeatedly add alert message.
+	if (!document.contains(document.querySelector(".contact__alert-text"))) {
+		contactForm.appendChild(alertText);
+	}
 }
 
+/**
+ * Clear all input values inside fnc's parameters.
+ * @param  {...any} inputs input DOM elements
+ */
+function clearInputs(...inputs) {
+	[...inputs].forEach((input) => (input.value = ""));
+}
 
-// function initialisePage() {
-
-// }
+/** Form validation end */

@@ -1066,8 +1066,6 @@ Contact form styling
 
 .contact__input-wrapper > input,
 .contact__input-wrapper > textarea {
-    --error-outline-color:  1px solid rgb(250, 60, 60);
-
 	width: 85%;
 	border: none;
 	background-color: var(--global-bg-color-darkgrey);
@@ -1140,11 +1138,23 @@ Contact form styling
 	}
 }
 
+/* Alert user backend isn't ready yet so information didn't submit */
 .contact__alert-text {
-	color: rgb(255, 55, 55);
+	color: var(--global-color-text);
 	font-style: italic;
 	font-size: var(--global-typography-font-size-larger);
 }
+
+.invalid-input {
+    outline: 1px solid rgb(250, 60, 60);
+}
+
+/* Error msg detailing what's the invalid input*/ 
+.invalid-input-errormsg {
+    color: rgb(255, 55, 55);
+    font-size: var(--global-typography-font-size-larger);
+}
+
 /* Contact form styling finish */
 
 /*
@@ -1315,9 +1325,6 @@ ABOUT ME PAGE STYLING
     width: 100%;
     height: 100%;
     transform: translateX(-80px);
-    /* width: 300px; */
-    /* transform: translateX(-5vw); */
-    /* height: 100%; */
 }
 
 .about-info {
