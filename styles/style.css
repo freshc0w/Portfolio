@@ -1395,3 +1395,44 @@ ABOUT ME PAGE STYLING
         transform: none;
     }
 }
+
+/*
+All projects page styling
+*/
+
+.all-projects-wrapper {
+    margin-top: clamp(6.5rem, 8vw, 10rem);
+    max-width: 75rem;
+}
+
+.all-projects-wrapper > h1 {
+    font-size: clamp(var(--global-typography-font-size-heading-medium), 4.5vw, var(--global-typography-font-size-heading-larger));
+}
+
+article.indiv-project__wrapper {
+    width: 100%;
+    perspective: 100px;
+    height: 200vh;
+}
+
+.indiv-project__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.indiv-project--img__wrapper {
+    max-width: 550px;
+    transform-style: preserve-3d;
+    transform: translateZ(-10px);
+}
+
+.indiv-project--img__wrapper > img {
+    width: 100%;
+}
+
+.indiv-project {
+    transform-style: preserve-3d;
+    position: static;
+    width: 100%;
+    transform: translateZ(30px);
+}
