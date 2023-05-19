@@ -786,7 +786,6 @@ Shorten top to accommodate for this. */
 .project__desc-actions > button > a {
 	color: var(--global-color-primary);
 	font-weight: var(--global-typography-font-weight-bold);
-	font-style: italic;
 }
 
 .project__desc-actions > button > a:hover {
@@ -1067,6 +1066,8 @@ Contact form styling
 
 .contact__input-wrapper > input,
 .contact__input-wrapper > textarea {
+    --error-outline-color:  1px solid rgb(250, 60, 60);
+
 	width: 85%;
 	border: none;
 	background-color: var(--global-bg-color-darkgrey);
@@ -1099,6 +1100,7 @@ Contact form styling
 	border: none;
 	box-shadow: 0 0 0.5rem rgba(240, 240, 240, 0.6);
 	outline: 1px solid var(--global-color-accent-light);
+	/* outline: var(--error-outline-color); */
 }
 
 .submit-form-btn {

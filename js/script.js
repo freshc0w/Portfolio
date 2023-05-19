@@ -333,6 +333,7 @@ projectCloseBtns.forEach((btn) => {
 		});
 	});
 });
+/* Project event listeners end */
 
 /* Form */
 const submitFormBtn = document.querySelector(".submit-form-btn");
@@ -340,27 +341,25 @@ const contactForm = document.querySelector("form");
 submitFormBtn.addEventListener("click", (e) => {
 	e.preventDefault();
 
-	// Alerts users/employers that backend collecting info fnc is currently
-	// down.
-	const alertText = document.createElement("p");
-	alertText.classList.add("contact__alert-text");
-
-	const userName = document.getElementById("input-name")
-		? document.getElementById("input-name")
-		: "user";
-
-	userName.value.style = "color: blue;";
-	alertText.textContent = `I apologise ${userName.value}. 
-    Backend for info collection is not set up yet.
-    Try contacting me in of the other links.`;
-
-	// Make sure not to repeatedly add alert message.
-	if (!document.contains(document.querySelector(".contact__alert-text"))) {
-		contactForm.appendChild(alertText);
-	}
+    submitSuccessful()
 });
 
-/* Project event listeners end */
+function submitSuccessful() {
+    // Alerts users/employers that backend collecting info fnc is currently
+    // down.
+    const alertText = document.createElement("p");
+    alertText.classList.add("contact__alert-text");
+    const userName = document.getElementById("input-name").value;
+	alertText.textContent = `I apologise ${userName}. 
+    Backend for info collection is not set up yet.
+    Try contacting me in of the other links.`;
+    
+    // Make sure not to repeatedly add alert message.
+    if(!document.contains(document.querySelector(".contact__alert-text"))) {
+        contactForm.appendChild(alertText);
+    }
+}
+
 
 // function initialisePage() {
 
