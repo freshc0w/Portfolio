@@ -1,3 +1,4 @@
+console.log(Window.url);
 /* 
 Navbar functionality that diseappears when scroll down.
 Concept inspired by w3schools "hide navbar on scroll" - 
@@ -76,7 +77,7 @@ function updateSkills(skillsCollection, skillsMap) {
 	 * @param {String} path Skill's url path to fetch image from devicon.dev
 	 * @param {Object} skillsMap Object that maps the skill's name to its
 	 * relevant info
-     * @returns {void}
+	 * @returns {void}
 	 */
 	const addSkillToCollection = (name, desc, path, skillsMap) => {
 		try {
@@ -446,7 +447,7 @@ function validateForm(...inputs) {
 	// add invalid input error msg.
 	if (!hasInputs || !validEmail) {
 		// Only add "no content" error msg if hasInputs is false.
-        // Need .substring to remove the last "and" in the str.
+		// Need .substring to remove the last "and" in the str.
 		invalidInputMsg.textContent = !hasInputs
 			? `${invalidInputMsg.textContent.substring(
 					0,
@@ -494,3 +495,4 @@ function clearInputs(...inputs) {
 }
 
 /** Form validation end */
+

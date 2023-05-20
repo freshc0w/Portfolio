@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,6 +24,7 @@
     <script src="./js/script.js" defer></script>
     <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header class="header-bar" id="nav-bar">
         <div class="header-bar__wrapper">
@@ -45,10 +47,12 @@
     <section id="all-projects" class="all-projects">
         <div class="all-projects-wrapper wrapper">
             <h1 class="section-heading-title">My work</h1>
-            
+
             <article class="indiv-project__wrapper">
                 <div class="indiv-project--img__wrapper">
-                    <img src="./images/background1-todo-list.png" alt="To do list project image" class="indiv-project--img">
+                    <img src="./images/background1-todo-list.png" alt="To do list project image"
+                        class="indiv-project--img">
+                    <video src="./assets/video1-to-do-list-demo.mp4" class="project-demo" autoplay muted loop></video>
                 </div>
                 <div class="indiv-project--desc__wrapper">
                     <div class="indiv-project project__desc">
@@ -74,12 +78,88 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </article>
 
+            <article class="indiv-project__wrapper">
+                <div class="indiv-project--img__wrapper">
+                    <img src="./images/background2.3-moviemate.png" alt="To do list project image"
+                        class="indiv-project--img">
+                    <video src="./assets/video2-moviemate-demo.mp4" class="project-demo" preload="none" autoplay muted loop></video>
+                </div>
+                <div class="indiv-project--desc__wrapper">
+                    <div class="indiv-project project__desc moviemate-desc">
+                        <h2>MovieMate</h2>
+                        <p>A fully responsive one-stop Movies/TV shows website searcher that displays its following
+                            watch providers with its relevant info. Built using <span class="project__desc-keywords">
+                                HTML, CSS, Javascript.</span></p>
+                        <p>This website fetches data from TMDB Api (The Movie DataBase) and lays the data out in a
+                            user-friendly format. User can also select a country to display relevant watch providers
+                            for streaming, purchase and/or rent.</p>
+                        <p>Other functionalities include displaying <span
+                                class="project__desc-highlighted-words">most-commonly searched info, reviews,
+                                trailer video and recommendations</span> based on the searched movie/tv show.</p>
+                        <h3>Challenges</h3>
+                        <p>First time dealing with async/await functions with relevant error handling felt very
+                            unfamiliar and awkward. Thankfully, the CRUD process felt comfortable after completing
+                            the To-Do-List.</p>
+
+                        <div class="project__desc-actions">
+                            <button class="project__desc-actions--live-repo">
+                                <a href="https://freshc0w.github.io/MovieMate/" target="_blank"> <span
+                                        class="fa fa-paper-plane"></span>Try it out live!</a></button>
+                            <button class="project__desc-actions--source-code"><a
+                                    href="https://github.com/freshc0w/MovieMate" target="_blank"><span
+                                        class="fa fa-github"></span>View the source code!</a></button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="indiv-project__wrapper">
+                <div class="indiv-project--img__wrapper">
+                    <img src="./images/background3-slot-pygame.png" alt="To do list project image"
+                        class="indiv-project--img">
+                    <video src="./assets/video3-pyslots-demo (1).mp4" class="project-demo pyslots-demo" autoplay muted loop></video>
+                </div>
+                <div class="indiv-project--desc__wrapper">
+                    <div class="indiv-project project__desc">
+                        <h2>Pygame Slot Machine</h2>
+                        <p>An interactive slot machine game, built using <span class="project__desc-keywords">Python
+                                with its open-source GUI Pygame library.</span></p>
+                        <p>The player may spin the reel and set the wager amount to spin.</p>
+                        <p>Other functionalities include local game storage to save the game by utilising json write
+                            to file.</p>
+                        <h3>Challenges</h3>
+                        <p>Because this was one of my first personal projects, it proved to be a fun challenge to
+                            implement object-orientated principles in a MVC (Model-View-Controller) pattern. Working
+                            with
+                            path directories for assets and animations were also quite unfamiliar initially.</p>
+
+                        <div class="project__desc-actions">
+                            <button class="project__desc-actions--source-code"><a
+                                    href="https://github.com/freshc0w/Pygame-Slot-Machine-Project" target="_blank"><span
+                                        class="fa fa-github"></span>View the source
+                                    code!</a></button>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </div>
     </section>
+
+    <section class="all-projects">
+        <div class="all-projects--cube__wrapper">
+            <div class="other-projects-cube cub show-front">
+                <div class="other-indiv-project other-proj-one"></div>
+                <div class="other-indiv-project other-proj-two"></div>
+                <div class="other-indiv-project other-proj-three"></div>
+                <div class="other-indiv-project other-proj-four"></div>
+                <div class="other-indiv-project other-proj-five"></div>
+                <div class="other-indiv-project other-proj-six"></div>
+            </div>
+        </div>
+    </section>
+
 </body>
+
 </html>
