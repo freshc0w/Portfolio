@@ -23,8 +23,10 @@ switchProjInputBtns.forEach((switchProjBtn) => {
         // e.g. "four"
 		projBtnName = projBtnName[projBtnName.length - 1];
 
+        // Rotate cube to specified project.
 		switchProjTo(otherProjCube, projBtnName);
 
+        // Reset all btns styling and set current button to "active"
         resetBtnsStyle(switchProjInputBtns);
         changeToActiveBtn(e.target);
 	});
