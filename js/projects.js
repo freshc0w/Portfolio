@@ -35,6 +35,12 @@ switchProjInputBtns.forEach((switchProjBtn) => {
 // Initialise first project button to be active.
 changeToActiveBtn(switchProjInputBtns[0]);
 
+/**
+ * Switches the cube's front to the specified project. The transition styling
+ * will make the rotation effect.
+ * @param {Element} cube cube element container that is doing the rotations.
+ * @param {String} proj Project number that forces the cube to display
+ */
 function switchProjTo(cube, proj) {
     // Cube should default have two classes. One is other-projects-cube and the
 	// other depends on which projects needs to be displayed. If there are no
@@ -48,17 +54,30 @@ function switchProjTo(cube, proj) {
 	cube.classList.add(`display-project-${proj}`);
 }
 
+/**
+ * Helper fnc that returns a string of the last class of a specified element.
+ * @param {Element} element A DOM element
+ * @returns {String}    Last class of a string
+ */
 function getLastClass(element) {
 	let lastClass = element.classList[element.classList.length - 1];
 	return lastClass;
 }
 
+/**
+ * Applies a specified styling to a button by adding an additional class.
+ * @param {Element} button Specified button to apply specified styling
+ */
 function changeToActiveBtn(button) {
 
     // Add class for active style.
 	button.classList.add("active-other-projects--btn");
 }
 
+/**
+ * Reset button styling by removing the specified style.
+ * @param {Array} buttons Specified buttons to apply specified styling.
+ */
 function resetBtnsStyle(buttons) {
 	buttons.forEach((button) =>
 		button.classList.remove("active-other-projects--btn")
