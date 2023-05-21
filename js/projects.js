@@ -1,7 +1,8 @@
 /** Projectsjs file decided to be created instead of only having one scriptjs
  * file to enhance simplicity in understanding the different functionalities
  * in the projects webpage.
- * This is due to the large number of functionalities not required from the scriptjs file to be implemented in the projects webpage.
+ * This is due to the large number of functionalities not required from the 
+ * scriptjs file to be implemented in the projects webpage.
  */
 
 /** Cube rotation in switching projects functionality */

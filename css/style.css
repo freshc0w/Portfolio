@@ -47,6 +47,7 @@ body {
 	color: var(--global-color-primary);
 }
 
+/* For the top-left signature name in navigation bar. */
 @font-face {
 	font-family: "Signature";
 	src: url("../files/assets/fonts/autography-font/Autography-DOLnW.otf");
@@ -61,15 +62,9 @@ body {
 	left: 0;
 	padding: max(0.4rem, 0.7vw) max(1.25rem, 3vw);
 	color: var(--global-color-primary);
-	background-color: var(--global-bg-color-primary);
 	background-color: rgba(12, 12, 12, 0.6);
 	text-decoration: none;
 	opacity: 0.9;
-
-	/* Blends with surrounding background when scrolling */
-	/* mix-blend-mode:lighten; */
-	/* background-blend-mode: darken; */
-
 	font-family: "Bebas Neue";
 	font-size: clamp(1.25rem, 2.5vw, 2rem);
 	transition: opacity ease-out 0.8s, top ease-out 0.8s;
@@ -92,7 +87,6 @@ body {
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
-	/* padding: 1.25rem 2rem; */
 	opacity: 0.9;
 }
 
@@ -105,6 +99,7 @@ body {
 	color: var(--global-color-accent-light);
 }
 
+/* For the line-seperation effect */
 .directory > a:not(:last-child)::after {
 	content: "";
 	border-left: 1px solid #606060;
@@ -160,15 +155,14 @@ section.hero {
 	align-items: center;
 	padding-top: 120px;
 	padding-bottom: 120px;
-	/* background-image: url(../images/pexels-pixabay-270348.jpg); */
-	background-image: url(../images/hero-background.jpg);
+	z-index: 1;
+	overflow: hidden;
+
 	background-image: url(../images/profile-hero-background.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 80%;
 	background-size: cover;
-	z-index: 1;
-	overflow: hidden;
 }
 
 .overlay-mask {
@@ -255,13 +249,11 @@ section.hero {
 	display: inline-block;
 	color: var(--global-color-accent-light);
 	font-weight: var(--global-typography-font-weight-bold);
-	/* border-bottom: 1px solid var(--global-color-accent-light); */
 }
 
 .hero__description {
 	font-weight: var(--global-typography-font-weight-primary);
 	font-size: var(--global-typography-font-size-primary);
-	/* text-align: justify; */
 	line-height: 1.2;
 }
 
@@ -287,14 +279,14 @@ section.hero {
 	backdrop-filter: blur(3px);
 }
 
-/* Button hover animation */
+/* Button rotate hover animation */
 .default-btn1::before {
-	color: var(--global-color-primary);
-	content: "";
-	display: block;
+    display: block;
 	position: absolute;
+	color: var(--global-color-primary);
 	width: 100%;
 	height: 100%;
+	content: "";
 	top: 0;
 	left: 0;
 	z-index: 1;
@@ -337,7 +329,6 @@ section.hero {
 	filter: brightness(0.85) contrast(120%) saturate(90%);
 }
 
-/* Need a max media query of 1025px */
 @media screen and (max-width: 1025px) {
 	.hero__title-container {
 		grid-template: 1fr 1fr / 1fr;
@@ -349,12 +340,10 @@ section.hero {
 }
 
 @media screen and (max-width: 650px) {
+
+    /* Reverse image and content description vertically */
 	.hero__headshot {
-		grid-row: 0;
-		/* width: 350px; */
 		grid-row: 1;
-		/* justify-self: start;
-		margin-inline: auto; */
 		width: 80%;
 	}
 	.hero__title {
@@ -387,7 +376,6 @@ section:not(#hero) {
 
 .section-heading-subtitle {
 	font-size: var(--global-typography-font-size-heading-small);
-	/* color: var(--global-color-accent); */
 	color: var(--global-color-accent-dark);
 	text-transform: uppercase;
 }
@@ -404,7 +392,6 @@ About section styling
 .about-wrapper p {
 	font-family: var(--global-typography-font-family-text);
 	font-size: var(--global-typography-font-size-primary);
-	/* text-align: justify; */
 	margin-bottom: 3vw;
 	margin-bottom: clamp(0.5rem, 3vw, 1.25rem);
 }
@@ -517,7 +504,6 @@ Skills and Technologies section styling
 }
 
 .skill-name {
-	font-family: var(--global-typography-font-family-primary);
 	font-family: var(--global-typography-font-family-secondary);
 	font-size: var(--global-typography-font-size-secondary);
 	text-transform: capitalize;
@@ -587,11 +573,9 @@ Projects section styling
 	flex: 1;
 	opacity: 0.775;
 	overflow: hidden;
-	/* need a transition ? */
 }
 
 .blur-overlay {
-	/* z-index: 2; */
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -608,7 +592,6 @@ Projects section styling
 .project:hover,
 .blur-overlay {
 	opacity: 0.85;
-	/* backdrop-filter: blur(2px); */
 }
 
 .projects-display:hover .project:not(hover) {
@@ -669,6 +652,7 @@ Projects section styling
 	background-repeat: no-repeat;
 }
 
+/* Project image-previews using background image */
 .project:first-child {
 	background-image: url(../images/background1-todo-list.png);
 }
@@ -709,7 +693,6 @@ Projects section styling
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.35);
 	transition: visibility 0.6s;
-	/* backdrop-filter: blur(1px); */
 }
 
 .to-do-list > .project-overlay {
@@ -735,6 +718,7 @@ Projects section styling
 	backdrop-filter: blur(3.5px);
 	box-shadow: 0 4px 16px rgba(240, 240, 240, 0.4);
 }
+
 /* Length of text makes project desc container overflow. 
 Shorten top to accommodate for this. */
 .moviemate-desc {
@@ -854,9 +838,6 @@ Shorten top to accommodate for this. */
 	}
 }
 
-.direct-projects-btn {
-	/* margin-top: 1rem; */
-}
 /* Propjects styling end */
 
 /* 
@@ -936,7 +917,8 @@ Blog styling
 	font-family: var(--global-typography-font-family-secondary);
 	background-color: var(--global-color-accent-dark);
 	border-radius: 0.75rem;
-	box-shadow: 1px 4px 16px rgba(0, 0, 0, 0.3), 1px 4px 24px rgba(0, 0, 0, 0.1);
+	box-shadow: 1px 4px 16px rgba(0, 0, 0, 0.3),
+                1px 4px 24px rgba(0, 0, 0, 0.1);
 	margin-right: 0;
 	margin-left: auto;
 }
@@ -969,11 +951,9 @@ Blog styling
 .blogs__temp-message {
 	font-size: var(--global-typography-font-size-heading-small);
 	margin-bottom: -3rem;
-	/* position: absolute; */
 	bottom: 0;
 	right: 0;
 	color: red;
-	/* right: 40%; */
 }
 
 @media screen and (max-width: 1125px) {
@@ -1101,7 +1081,6 @@ Contact form styling
 	border: none;
 	box-shadow: 0 0 0.5rem rgba(240, 240, 240, 0.6);
 	outline: 1px solid var(--global-color-accent-light);
-	/* outline: var(--error-outline-color); */
 }
 
 .submit-form-btn {
@@ -1170,7 +1149,6 @@ footer {
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
-	/* width: 100vw; */
 	padding: 0.25rem;
 	background-color: rgba(10, 10, 10, 1);
 	color: whitesmoke;
@@ -1209,6 +1187,7 @@ BLOGS PAGE STYLING
 	width: 100%;
 }
 
+/* Responsive texts for headings and paragraphs */
 .blogs-intro-wrapper > .blog-info > h1.blog__title {
 	font-size: clamp(1.5rem, 3vw, 2.5rem);
 }
@@ -1284,7 +1263,6 @@ ABOUT ME PAGE STYLING
 	height: 100svh;
 	display: grid;
 	grid-template-columns: 70vw 1000px;
-	/* grid-template-rows: 3fr 1.5fr; */
 	overflow: hidden;
 }
 
@@ -1301,7 +1279,6 @@ ABOUT ME PAGE STYLING
 }
 
 .about__content > p {
-	/* margin-top: 1.5vw; */
 	margin-top: clamp(0.5rem, 1.5vw, 1rem);
 }
 
@@ -1323,7 +1300,6 @@ ABOUT ME PAGE STYLING
 	grid-row: 1/ -1;
 	padding: 0;
 	height: 100vh;
-	/* width: 100%; */
 }
 
 .about__picture > img {
@@ -1357,10 +1333,6 @@ ABOUT ME PAGE STYLING
 
 	.about__content h2 {
 		font-size: 1.25rem;
-	}
-
-	.about__picture > img {
-		/* transform: translateX(70px); */
 	}
 
 	.about__content > h1:last-of-type,
@@ -1475,6 +1447,7 @@ article.indiv-project__wrapper:last-of-type
 }
 
 /* Project cube in projects page styling */
+/* Concept inspired by https://3dtransforms.desandro.com/cube */
 section#other-projects {
 	--cube-dimension: clamp(300px, 80vw, 600px);
     --other-projects-element-gaps: 1.25rem;
@@ -1514,7 +1487,6 @@ section#other-projects > .other-projects--directory {
 }
 
 .switch-projects-btn__container > .switch-proj-option--btn:hover {
-    /* background-color: var(--global-bg-color-darkgrey); */
     background-color: var(--global-bg-color-secondary);
     color: var(--global-bg-color-lightgrey);
     font-size: var(--global-typography-font-size-larger);
@@ -1744,3 +1716,6 @@ span.highlight-workinprogress-proj > a {
         display: none;
     }
 }
+
+/* Rotating cube styling finish */
+/* PROECTS PAGE STYLING FINISH */

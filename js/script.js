@@ -1,4 +1,3 @@
-console.log(Window.url);
 /* 
 Navbar functionality that diseappears when scroll down.
 Concept inspired by w3schools "hide navbar on scroll" - 
@@ -301,6 +300,7 @@ function expands() {
 projectCloseBtns.forEach((btn) => {
 	btn.addEventListener("click", (e) => {
 		projects.forEach((proj) => {
+            
 			// Remove click event listener for project container so that user
 			// cannot expand any other projects.
 			proj.removeEventListener("click", expands);
