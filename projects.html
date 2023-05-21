@@ -9,9 +9,6 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="./css/style.css">
 
-    <!-- icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +23,8 @@
 </head>
 
 <body>
+
+    <!-- Navigation bar -->
     <header class="header-bar" id="nav-bar">
         <div class="header-bar__wrapper">
             <nav class="directory">
@@ -45,13 +44,18 @@
     </header>
 
     <!-- This section contains all the main projects seen in the hompage
-    Each consists of a video that is autoplayed and a project description.
-    When the page reaches tablet size, the videos are then replaced with images for mobile-friendly accessibility concerns. -->
+        Each consists of a video that is autoplayed and a project description.
+        When the page reaches tablet size, the videos are then replaced with images 
+        for mobile-friendly accessibility concerns. -->
     <section id="all-projects" class="all-projects">
         <div class="all-projects-wrapper wrapper">
             <h1 class="section-heading-title">My work</h1>
             <article class="indiv-project__wrapper">
                 <div class="indiv-project--img__wrapper">
+
+                    <!-- Image will be displayed with tablet / mobile devices
+                        Otherwise, video will be autoplayed to show demo of
+                        project. -->
                     <img src="./images/background1-todo-list.png" alt="To do list project image"
                         class="indiv-project--img">
                     <video src="./files/assets/video1-to-do-list-demo.mp4" class="project-demo" autoplay muted
@@ -71,6 +75,7 @@
                             project is the prior brainstorming/mapping of each classes/factory functions to
                             coordinate each tasks and projects.</p>
 
+                        <!-- Links to GitHub source code and live site. -->
                         <div class="project__desc-actions">
                             <button class="project__desc-actions--live-repo">
                                 <a href="https://freshc0w.github.io/odin-to-do-list/" target="_blank"> <span
@@ -152,6 +157,11 @@
         </div>
     </section>
 
+    <!-- Other projects displayed by each cube's surface. The user can click
+        on a button to select to view a project. The cube will rotate to that
+        project and show a brief image and description on it's face.
+        Concept inspired by https://3dtransforms.desandro.com/cube. 
+    -->
     <section id="other-projects" class="other-projects">
         <h1>My Other Projects</h1>
         <a class="other-projects--directory" href="#other-projects"><button
@@ -176,6 +186,9 @@
                     <div class="other-indiv-project-img-wrapper">
                         <img src="./images/ctrlFinder-searchbar.png" alt="project ctrlFinder image">
                     </div>
+
+                    <!-- Description of the project and source code / "work 
+                        in progress" information provided -->
                     <div class="other-indiv-project__desc">
                         <p><span class="highlight-proj">ctrlFinder:</span> The dynamic discovery engine, linking and
                             authenticating your favorite services like Discord, Google Drive, Facebook, and more. Simply
@@ -255,10 +268,7 @@
                 </div>
             </div>
         </div>
-
-
     </section>
-
 </body>
 
 </html>
