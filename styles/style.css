@@ -1491,19 +1491,39 @@ section#other-projects > .other-projects--directory {
     margin-top: calc(var(--other-projects-element-gaps) * -2); 
 }
 
-form.switch-projects__container {
+.switch-projects-btn__container {
     --proj-input-gap: clamp(1rem, 1vw, 2rem);
-	display: flex;
-	flex-wrap: wrap;
-	max-width: var(--cube-dimension);
-	justify-content: center;
-	gap: var(--proj-input-gap);
+    display: grid;
+    grid-template-columns: calc(var(--cube-dimension) / 2) calc(var(--cube-dimension) / 2);
+    grid-auto-flow: row;
+    column-gap: var(--proj-input-gap);
+    row-gap: calc(var(--proj-input-gap) / 1.75);
 }
 
-/* To dampen/negate the flex gap property for vertical spacing,
-this margin-top is required. */
-form.switch-projects__container > .switch-projects__wrapper {
-    margin-top: calc(var(--proj-input-gap) * -0.75)
+.switch-projects-btn__container > .switch-proj-option--btn {
+    cursor: pointer;
+    border: 1px solid var(--global-color-primary);
+    padding: 0.4rem 1rem;
+    font-size: var(--global-typography-font-family-secondary);
+    border-radius: 1.2rem;
+    background-color: var(--global-color-accent);
+    font-size: var(--global-typography-font-size-primary);
+    box-shadow: 0 0 3px rgba(250, 250, 250, 0.75),
+                0 0 6px rgba(250, 250, 250, 0.5);
+}
+
+.switch-projects-btn__container > .switch-proj-option--btn:hover {
+    /* background-color: var(--global-bg-color-darkgrey); */
+    background-color: var(--global-bg-color-secondary);
+    color: var(--global-bg-color-lightgrey);
+    font-size: var(--global-typography-font-size-larger);
+    box-shadow: 0 0 10px var(--global-color-accent);
+}
+.switch-projects-btn__container > .switch-proj-option--btn:focus,
+.switch-projects-btn__container > .active-other-projects--btn {
+    background-color: var(--global-bg-color-darkgrey);
+    color: var(--global-color-primary);
+    font-size: var(--global-typography-font-size-larger);
 }
 
 .switch-projects__wrapper {
@@ -1538,39 +1558,66 @@ section.other-projects > h1 {
 	width: 100%;
 	height: 100%;
 	transform: translateZ(calc(var(--cube-dimension) / -2));
+    transition: transform 1s ease-in-out;
 }
 
 .other-indiv-project {
 	position: absolute;
 	width: 100%;
 	height: 100%;
+    border: 1px solid var(--global-color-accent);
+    outline: 1px solid var(--global-color-accent-light);
 	text-align: center;
 	font-size: 3rem;
+    box-shadow: 0 0 4px var(--global-bg-color-light),
+                0 0 8px rgba(250, 250, 250, 0.7),
+                0 0 16px rgba(250, 250, 250, 0.45);
+    animation: dimming-glow 3.5s alternate infinite;
+}
+
+/* Makes a lighbulb glow effect around the edges of the cube */
+@keyframes dimming-glow {
+    0% {
+        box-shadow: 0 0 2px var(--global-bg-color-light),
+                0 0 3px rgba(250, 250, 250, 0.7),
+                0 0 5px rgba(250, 250, 250, 0.45);
+    }
+    50% {
+        box-shadow: 0 0 4px var(--global-bg-color-light),
+                0 0 10px rgba(250, 250, 250, 0.7),
+                0 0 20px rgba(250, 250, 250, 0.45);
+    }
+    0% {
+        box-shadow: 0 0 10px var(--global-bg-color-light),
+                0 0 20px rgba(250, 250, 250, 0.7),
+                0 0 30px rgba(250, 250, 250, 0.45);
+    }
 }
 
 .other-proj-one {
 	transform: rotateY(0deg) translateZ(calc(var(--cube-dimension) / 2));
-	background: hsla(0, 100%, 50%, 0.7);
+	background-color: rgba(255, 0, 0, 0.7);
+    backdrop-filter: blur(1.5px);
 }
 .other-proj-two {
-	transform: rotateY(90deg) translateZ(calc(var(--cube-dimension) / 2));
-	background: hsla(60, 100%, 50%, 0.7);
+    transform: rotateY(90deg) translateZ(calc(var(--cube-dimension) / 2));
+    background-color: rgba(0, 255, 0, 0.7);
 }
 .other-proj-three {
-	transform: rotateY(180deg) translateZ(calc(var(--cube-dimension) / 2));
-	background: hsla(120, 100%, 50%, 0.7);
+    transform: rotateY(180deg) translateZ(calc(var(--cube-dimension) / 2));
+    background-color: rgba(0, 0, 255, 0.7);
 }
 .other-proj-four {
-	transform: rotateY(-90deg) translateZ(calc(var(--cube-dimension) / 2));
-	background: hsla(180, 100%, 50%, 0.7);
+    transform: rotateY(-90deg) translateZ(calc(var(--cube-dimension) / 2));
+    background-color: rgba(255, 100, 100, 0.7);
 }
 .other-proj-five {
-	transform: rotateX(90deg) translateZ(calc(var(--cube-dimension) / 2));
-	background: hsla(210, 100%, 50%, 0.7);
+    transform: rotateX(90deg) translateZ(calc(var(--cube-dimension) / 2));
+	background-color: rgba(100, 255, 100, 0.7);
 }
 .other-proj-six {
-	transform: rotateX(-90deg) translateZ(calc(var(--cube-dimension) / 2));
-	background: hsla(240, 100%, 50%, 0.7);
+    transform: rotateX(-90deg) translateZ(calc(var(--cube-dimension) / 2));
+    background-color: rgba(100, 100, 255, 0.7);
 }
 
 .display-project-one {

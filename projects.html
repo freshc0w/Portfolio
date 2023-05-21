@@ -21,7 +21,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
-    <script src="./js/script.js" defer></script>
     <script src="./js/projects.js" defer></script>
     <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
 </head>
@@ -85,7 +84,8 @@
                 <div class="indiv-project--img__wrapper">
                     <img src="./images/background2.3-moviemate.png" alt="To do list project image"
                         class="indiv-project--img">
-                    <video src="./assets/video2-moviemate-demo.mp4" class="project-demo" preload="none" autoplay muted loop></video>
+                    <video src="./assets/video2-moviemate-demo.mp4" class="project-demo" preload="none" autoplay muted
+                        loop></video>
                 </div>
                 <div class="indiv-project--desc__wrapper">
                     <div class="indiv-project project__desc moviemate-desc">
@@ -120,7 +120,8 @@
                 <div class="indiv-project--img__wrapper">
                     <img src="./images/background3-slot-pygame.png" alt="To do list project image"
                         class="indiv-project--img">
-                    <video src="./assets/video3-pyslots-demo (1).mp4" class="project-demo pyslots-demo" autoplay muted loop></video>
+                    <video src="./assets/video3-pyslots-demo (1).mp4" class="project-demo pyslots-demo" autoplay muted
+                        loop></video>
                 </div>
                 <div class="indiv-project--desc__wrapper">
                     <div class="indiv-project project__desc">
@@ -150,39 +151,23 @@
 
     <section id="other-projects" class="other-projects">
         <h1>My Other Projects</h1>
-        <a class="other-projects--directory" href="#other-projects"><button class="project-display-btn fa fa-chevron-down"></button></a>
-        <form action="" class="switch-projects__container">
-            <div class="switch-projects__wrapper">
-                <label for="proj-one">Project one</label>
-                <input type="radio" name="switch-proj" value="proj-one" id="proj-one" class="switch-proj">
-            </div>
-            <div class="switch-projects__wrapper">
-                <label for="proj-two">Project two</label>
-                <input type="radio" name="switch-proj" value="proj-two" id="proj-two" class="switch-proj">
-            </div>
-            <div class="switch-projects__wrapper">
-                <label for="proj-three">Project three</label>
-                <input type="radio" name="switch-proj" value="proj-three" id="proj-three" class="switch-proj">
-            </div>
-            <div class="switch-projects__wrapper">
-                <label for="proj-four">Project four</label>
-                <input type="radio" name="switch-proj" value="proj-four" id="proj-four" class="switch-proj">
-            </div>
-            <div class="switch-projects__wrapper">
-                <label for="proj-four">Project four</label>
-                <input type="radio" name="switch-proj" value="proj-four" id="proj-four" class="switch-proj">
-            </div>
-            <div class="switch-projects__wrapper">
-                <label for="proj-five">Project five</label>
-                <input type="radio" name="switch-proj" value="proj-five" id="proj-five" class="switch-proj">
-            </div>
-            <div class="switch-projects__wrapper">
-                <label for="proj-six">Project six</label>
-                <input type="radio" name="switch-proj" value="proj-six" id="proj-six" class="switch-proj">
-            </div>
-        </form>
+        <a class="other-projects--directory" href="#other-projects"><button
+                class="project-display-btn fa fa-chevron-down"></button></a>
+        <div class="switch-projects-btn__container">
+            <button name="option-proj-one" class="switch-proj-option--btn">Project One</button>
+            <button name="option-proj-two" class="switch-proj-option--btn">Project Two</button>
+            <button name="option-proj-three" class="switch-proj-option--btn">Project One</button>
+            <button name="option-proj-four" class="switch-proj-option--btn">Project One</button>
+            <button name="option-proj-five" class="switch-proj-option--btn">Project One</button>
+            <button name="option-proj-six" class="switch-proj-option--btn">Project One</button>
+        </div>
         <div class="other-projects--cube__wrapper">
-            <div class="other-projects-cube display-project-one">
+
+            <!-- This cube's second class will change depending on which
+            project will be displayed at the front of the cube.
+            e.g. If the first project is to be displayed, the
+            "display-project-one" class will be added. -->
+            <div class="other-projects-cube display-project-onedocumen">
                 <div class="other-indiv-project other-proj-one">front</div>
                 <div class="other-indiv-project other-proj-two">right</div>
                 <div class="other-indiv-project other-proj-three">back</div>
