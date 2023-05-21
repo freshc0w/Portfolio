@@ -22,6 +22,7 @@
 
     <!-- Scripts -->
     <script src="./js/script.js" defer></script>
+    <script src="./js/projects.js" defer></script>
     <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
 </head>
 
@@ -147,17 +148,51 @@
         </div>
     </section>
 
-    <section class="all-projects">
-        <div class="all-projects--cube__wrapper">
-            <div class="other-projects-cube cub show-front">
-                <div class="other-indiv-project other-proj-one"></div>
-                <div class="other-indiv-project other-proj-two"></div>
-                <div class="other-indiv-project other-proj-three"></div>
-                <div class="other-indiv-project other-proj-four"></div>
-                <div class="other-indiv-project other-proj-five"></div>
-                <div class="other-indiv-project other-proj-six"></div>
+    <section id="other-projects" class="other-projects">
+        <h1>My Other Projects</h1>
+        <a class="other-projects--directory" href="#other-projects"><button class="project-display-btn fa fa-chevron-down"></button></a>
+        <form action="" class="switch-projects__container">
+            <div class="switch-projects__wrapper">
+                <label for="proj-one">Project one</label>
+                <input type="radio" name="switch-proj" value="proj-one" id="proj-one" class="switch-proj">
+            </div>
+            <div class="switch-projects__wrapper">
+                <label for="proj-two">Project two</label>
+                <input type="radio" name="switch-proj" value="proj-two" id="proj-two" class="switch-proj">
+            </div>
+            <div class="switch-projects__wrapper">
+                <label for="proj-three">Project three</label>
+                <input type="radio" name="switch-proj" value="proj-three" id="proj-three" class="switch-proj">
+            </div>
+            <div class="switch-projects__wrapper">
+                <label for="proj-four">Project four</label>
+                <input type="radio" name="switch-proj" value="proj-four" id="proj-four" class="switch-proj">
+            </div>
+            <div class="switch-projects__wrapper">
+                <label for="proj-four">Project four</label>
+                <input type="radio" name="switch-proj" value="proj-four" id="proj-four" class="switch-proj">
+            </div>
+            <div class="switch-projects__wrapper">
+                <label for="proj-five">Project five</label>
+                <input type="radio" name="switch-proj" value="proj-five" id="proj-five" class="switch-proj">
+            </div>
+            <div class="switch-projects__wrapper">
+                <label for="proj-six">Project six</label>
+                <input type="radio" name="switch-proj" value="proj-six" id="proj-six" class="switch-proj">
+            </div>
+        </form>
+        <div class="other-projects--cube__wrapper">
+            <div class="other-projects-cube display-project-one">
+                <div class="other-indiv-project other-proj-one">front</div>
+                <div class="other-indiv-project other-proj-two">right</div>
+                <div class="other-indiv-project other-proj-three">back</div>
+                <div class="other-indiv-project other-proj-four">left</div>
+                <div class="other-indiv-project other-proj-five">top</div>
+                <div class="other-indiv-project other-proj-six">bottom</div>
             </div>
         </div>
+
+
     </section>
 
 </body>

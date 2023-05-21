@@ -1473,90 +1473,121 @@ article.indiv-project__wrapper:last-of-type
 }
 
 /* Project cube in projects page styling */
-.all-projects--cube__wrapper {
+section#other-projects {
+	--cube-dimension: clamp(300px, 80vw, 600px);
+	--perspective-scale: 2;
+    --other-projects-element-gaps: 1.25rem;
+    height: 100svh;
+    height: 100vh; /* Required for unsupported browsers that doesn't have svh */
+	padding-inline: 5.5vw;
 	display: flex;
-	justify-content: center;
+	flex-flow: column nowrap;
+    gap: var(--other-projects-element-gaps);
 	align-items: center;
-	width: 200px;
-	height: 200px;
-	margin: 80px;
-	perspective: 800px;
 }
 
-.cube {
-	width: 200px;
-	height: 200px;
+section#other-projects > .other-projects--directory {
+    /* To make the floating button nearer to the heading */
+    margin-top: calc(var(--other-projects-element-gaps) * -2); 
+}
+
+form.switch-projects__container {
+    --proj-input-gap: clamp(1rem, 1vw, 2rem);
+	display: flex;
+	flex-wrap: wrap;
+	max-width: var(--cube-dimension);
+	justify-content: center;
+	gap: var(--proj-input-gap);
+}
+
+/* To dampen/negate the flex gap property for vertical spacing,
+this margin-top is required. */
+form.switch-projects__container > .switch-projects__wrapper {
+    margin-top: calc(var(--proj-input-gap) * -0.75)
+}
+
+.switch-projects__wrapper {
+	font-size: clamp(
+		var(--global-typography-font-size-primary),
+		2.5vw,
+		var(--global-typography-font-size-heading-small)
+	);
+}
+
+.other-projects--cube__wrapper {
+	width: var(--cube-dimension);
+	height: var(--cube-dimension);
+	perspective: calc(var(--cube-dimension) * 2);
+	margin-inline: auto;
+    margin-top: clamp(0.75rem, 4vw, 2rem);
+}
+
+section.other-projects > h1 {
+	text-align: center;
+	font-size: clamp(
+		var(--global-typography-font-size-heading-medium),
+		2.5vw,
+		var(--global-typography-font-size-heading-large)
+	);
+	padding: clamp(0.75rem, 3vw, 1.4rem);
+}
+
+.other-projects-cube {
 	position: relative;
 	transform-style: preserve-3d;
-	transform: translateZ(-100px);
-	transition: transform 1s;
-}
-
-.cube.show-front {
-	transform: translateZ(-100px) rotateY(0deg);
-}
-.cube.show-right {
-	transform: translateZ(-100px) rotateY(-90deg);
-}
-.cube.show-back {
-	transform: translateZ(-100px) rotateY(-180deg);
-}
-.cube.show-left {
-	transform: translateZ(-100px) rotateY(90deg);
-}
-.cube.show-top {
-	transform: translateZ(-100px) rotateX(-90deg);
-}
-.cube.show-bottom {
-	transform: translateZ(-100px) rotateX(90deg);
+	width: 100%;
+	height: 100%;
+	transform: translateZ(calc(var(--cube-dimension) / -2));
 }
 
 .other-indiv-project {
 	position: absolute;
-	width: 200px;
-	height: 200px;
-	border: 2px solid black;
-	line-height: 200px;
-	font-size: 40px;
-	font-weight: bold;
-	color: white;
+	width: 100%;
+	height: 100%;
 	text-align: center;
+	font-size: 3rem;
 }
 
-other-proj--one {
+.other-proj-one {
+	transform: rotateY(0deg) translateZ(calc(var(--cube-dimension) / 2));
 	background: hsla(0, 100%, 50%, 0.7);
 }
-other-proj--two {
+.other-proj-two {
+	transform: rotateY(90deg) translateZ(calc(var(--cube-dimension) / 2));
 	background: hsla(60, 100%, 50%, 0.7);
 }
-other-proj--three {
+.other-proj-three {
+	transform: rotateY(180deg) translateZ(calc(var(--cube-dimension) / 2));
 	background: hsla(120, 100%, 50%, 0.7);
 }
-other-proj--four {
+.other-proj-four {
+	transform: rotateY(-90deg) translateZ(calc(var(--cube-dimension) / 2));
 	background: hsla(180, 100%, 50%, 0.7);
 }
-other-proj--five {
+.other-proj-five {
+	transform: rotateX(90deg) translateZ(calc(var(--cube-dimension) / 2));
+	background: hsla(210, 100%, 50%, 0.7);
+}
+.other-proj-six {
+	transform: rotateX(-90deg) translateZ(calc(var(--cube-dimension) / 2));
 	background: hsla(240, 100%, 50%, 0.7);
 }
-other-proj--six {
-	background: hsla(300, 100%, 50%, 0.7);
-}
 
-other-proj--one {
-	transform: rotateY(0deg) translateZ(100px);
+.display-project-one {
+	transform: translateZ(calc(var(--cube-dimension) / -2)) rotateY(0deg);
 }
-other-proj--two {
-	transform: rotateY(90deg) translateZ(100px);
+.display-project-two {
+	transform: translateZ(calc(var(--cube-dimension) / -2)) rotateY(-90deg);
 }
-other-proj--three {
-	transform: rotateY(180deg) translateZ(100px);
+.display-project-three {
+	transform: translateZ(calc(var(--cube-dimension) / -2)) rotateY(-180deg);
 }
-other-proj--four {
-	transform: rotateY(-90deg) translateZ(100px);
+.display-project-four {
+	transform: translateZ(calc(var(--cube-dimension) / -2)) rotateY(90deg);
 }
-other-proj--five {
-	transform: rotateX(90deg) translateZ(100px);
+.display-project-five {
+	transform: translateZ(calc(var(--cube-dimension) / -2)) rotateX(-90deg);
 }
-other-proj--six {
-	transform: rotateX(-90deg) translateZ(100px);
+.display-project-six {
+	transform: translateZ(calc(var(--cube-dimension) / -2)) rotateX(90deg);
 }
