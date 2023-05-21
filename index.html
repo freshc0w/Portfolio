@@ -8,7 +8,7 @@
     <title>Jason Tsou</title>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
@@ -23,7 +23,9 @@
 
     <!-- Scripts -->
     <script src="./js/script.js" defer></script>
-    <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
+
+    <!-- Needed for ease in inserting common icons. API key self-owned. -->
+    <script src="https://kit.fontawesome.com/6036096d57.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -46,8 +48,13 @@
         </div>
     </header>
 
-
+    <!-- Hero / Introduction page where the user will first see when entering
+        the site. It is made by foreground elements introducing myself, a picture
+        and a darkened background image. -->
     <section id="hero" class="hero">
+
+        <!-- The overlay mask div will help darken the background-image so
+            that the foreground elements are emphasized. -->
         <div class="overlay-mask"></div>
         <div class="hero__title-container">
             <div class="hero__info">
@@ -69,7 +76,11 @@
         </div>
     </section>
 
+    <!-- About section talking a little bit about myself. -->
     <section id="about" class="about">
+
+        <!-- Every section will have a wrapper class. This wrapper class helps
+            centralise the content with a relative padding-inline. -->
         <div class="about-wrapper wrapper">
             <h1>
                 <span class="section-heading-num">01.</span>
@@ -103,6 +114,9 @@
         </div>
     </section>
 
+    <!-- Skills section detailing the skills and programming languages I'm
+        familiar with. This section contains a carousel that consists of several
+        technologies containers with their logo and name. -->
     <section id="skills" class="skills">
         <div class="skills-wrapper wrapper">
             <h1>
@@ -112,6 +126,7 @@
                 <span class="section-heading-subtitle">What I'm familiar with...</span>
             </h1>
 
+            <!-- Skill carousel -->
             <div class="skills-container">
                 <button class="fa fa-chevron-left prev" aria-label="previous"></button>
                 <div class="skills-train-wrapper">
@@ -122,6 +137,10 @@
         </div>
     </section>
 
+    <!-- Projects section consists of the heading and three different projects displayed horizontally.
+        Each display previews the project image as a background and the name and
+        picture as the foreground. User can click and expand that particular
+        project to see more information about the project. -->
     <section id="projects" class="projects">
         <div class="projects-wrapper">
             <h1>
@@ -130,11 +149,17 @@
                 <br>
                 <span class="section-heading-subtitle">What I've done in my spare time...</span>
                 <br>
+
+                <!-- If user presses this button, the screen will be automatically
+                    scrolled to the full size of this section. -->
                 <a href="#projects"><button class="project-display-btn fa fa-chevron-down"></button></a>
             </h1>
 
             <div class="projects-display">
                 <div class="project to-do-list">
+
+                    <!-- Blurs and darken that background preview image of the
+                        project -->
                     <div class="blur-overlay"></div>
 
                     <div class="project__modal-container">
@@ -142,7 +167,14 @@
                         <div class="project__modal-logo">
                             <img class="todo-icon" src="./images/to-do-list-checklist-icon.png" alt="tickbox picture">
                         </div>
+
+                        <!-- Prompt for the user to click on the preview -->
+                        <h3>Click Me!</h3>
                     </div>
+
+                    <!-- project-overlay consists of the project description that is shown as a 
+                        modal when the project is expanded. Links to the live site and the source
+                        code in GitHub is also added -->
                     <div class="project-overlay">
                         <div class="project__desc">
                             <h2>To-Do-List</h2>
@@ -157,6 +189,7 @@
                                 project is the prior brainstorming/mapping of each classes/factory functions to
                                 coordinate each tasks and projects.</p>
 
+                            <!-- Links -->
                             <div class="project__desc-actions">
                                 <button class="project__desc-actions--live-repo">
                                     <a href="https://freshc0w.github.io/odin-to-do-list/" target="_blank"> <span
@@ -166,6 +199,9 @@
                                             class="fa fa-github"></span>View the source code!</a></button>
                             </div>
                         </div>
+
+                        <!-- Close button closes the description and the 3
+                            preview displays are shown again.  -->
                         <button class="project__close--btn fa fa-close"></button>
                     </div>
                 </div>
@@ -177,6 +213,7 @@
                         <div class="project__modal-logo">
                             <img src="./images/movie-recorder-icon.png" alt="film-recorder icon picture">
                         </div>
+                        <h3>Click Me!</h3>
                     </div>
                     <div class="project-overlay">
                         <div class="project__desc moviemate-desc">
@@ -215,6 +252,7 @@
                         <div class="project__modal-logo">
                             <img src="./images/slot-machine-icon.png" alt="slot-machine icon">
                         </div>
+                        <h3>Click Me!</h3>
                     </div>
                     <div class="project-overlay">
                         <div class="project__desc">
@@ -244,6 +282,9 @@
             <a href="./projects.html"><button class="default-btn1 direct-projects-btn">View all my projects</button></a>
     </section>
 
+    <!-- Blogs section that consists of two preview blogs side by side with their
+        respective images, dates, titles and their descriptions. User can click on
+        the bottom right button to read the whole blog in another webpage.  -->
     <section id="blogs" class="blogs">
         <div class="blog-wrapper wrapper">
             <h1>
@@ -270,7 +311,7 @@
                             for Emmet is here to save the day (and your hands)."
                         </em></p>
                     <div class="blog-link-wrapper">
-                        <p class="blogs__temp-message"><em>Links to be added.. Sorry!</em></p>
+                        <p class="blogs__temp-message"></p>
                         <button class="blog-link">
                             <a href="./blogs.html">Read more <span class="fa fa-arrow-up"></span> </a>
                         </button>
@@ -292,15 +333,18 @@
                         </em></p>
                     <div class="blog-link-wrapper">
                         <button class="blog-link">
-                            <a href="#blogs">Ongoing...<span class="fa fa-arrow-up"></span> </a>
+                            <!-- Need to add ongoing-blog class to set cursor to default
+                                to let user know there is no link. -->
+                            <a class="ongoing-blog" href="#blogs">Ongoing...<span class="fa fa-arrow-up"></span> </a>
                         </button>
                     </div>
                 </div>
-                <!-- <p class="blogs__temp-message"><em>Links to be added.. Sorry!</em></p> -->
             </div>
         </div>
-
     </section>
+
+    <!-- Contact section that contains name, email and message input boxes.
+        User can insert their details and submit to send a message. -->
     <section id="contact" class="contact">
         <div class="contact-wrapper wrapper">
             <h1>
@@ -312,6 +356,7 @@
             <p>I am currently looking for any <span class="contact-highlight">Software Engineering</span> and / or <span
                     class="contact-highlight">Web Development</span> roles / opportunities.</p>
 
+            <!-- Provide GitHub and LinkedIn profile links -->
             <div class="contact__links">
                 <h3>Visit Me On:</h3>
                 <a href="https://github.com/freshc0w" target="_blank"><span class="fa fa-github"></span></a>
@@ -319,19 +364,25 @@
                         class="fa fa-linkedin"></span></a>
             </div>
 
+            <!-- Form will send an error message beneath the inputs
+                if there is any invalid input. The styling of the 
+                targeted input boxes will also appear red.
+                See script.js for form validation. -->
             <form action="">
                 <div class="contact__input-wrapper">
-                    <label for="input-name">Name:</label>
+                    <label for="input-name">*Name:</label>
                     <input id="input-name" name="input-name" type="text" placeholder="Chia-Chuan Tsou">
                 </div>
                 <div class="contact__input-wrapper">
-                    <label for="input-email">Email:</label>
+                    <label for="input-email">*Email:</label>
                     <input id="input-email" name="input-name" type="text" placeholder="example@gmail.com">
                 </div>
                 <div class="contact__input-wrapper">
                     <label for="input-message">Message:</label>
                     <textarea id="input-message" name="input-message" placeholder="I have a query on..."></textarea>
                 </div>
+
+                <!-- Submit form button -->
                 <button class="submit-form-btn" type="submit">Send <span class="fa fa-arrow-up"></span></button>
             </form>
         </div>
